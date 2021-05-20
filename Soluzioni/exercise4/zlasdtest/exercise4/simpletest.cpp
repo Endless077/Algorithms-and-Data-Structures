@@ -104,20 +104,25 @@ void stestBSTInt(uint& testnum, uint& testerr) {
     lasd::BST<int> bst1(bst);
 
     EqualBST(loctestnum, loctesterr, bst, bst1);
+
     Remove(loctestnum, loctesterr, bst1, 4);
+
     NonEqualBST(loctestnum, loctesterr, bst, bst1);
 
     InsertC(loctestnum, loctesterr, bst1, 4);
+
     EqualBST(loctestnum, loctesterr, bst, bst1);
 
     lasd::BST<int> bst2 = bst1;
 
     EqualBST(loctestnum, loctesterr, bst1, bst2);
+
     RemovePredecessor(loctestnum, loctesterr, bst1, true, 9);
+
     NonEqualBST(loctestnum, loctesterr, bst1, bst2);
 
     lasd::BST<int> bst3(std::move(bst2));
-    
+
     Empty(loctestnum, loctesterr, bst2, true);
     Size(loctestnum, loctesterr, bst2, true, 0);
 
@@ -125,7 +130,7 @@ void stestBSTInt(uint& testnum, uint& testerr) {
     Size(loctestnum, loctesterr, bst3, true, 3);
 
     bst2 = std::move(bst1);
-    
+
     Empty(loctestnum, loctesterr, bst1, true);
     Size(loctestnum, loctesterr, bst1, true, 0);
 
@@ -230,53 +235,53 @@ void stestBSTString(uint& testnum, uint& testerr) {
     lasd::BST<string> bst(vec);
     Size(loctestnum, loctesterr, bst, true, 5);
 
-    MapPreOrder(loctestnum, loctesterr, bst, true, &MapPrint<string>, 0);
-
-    lasd::BTPreOrderIterator<string> itr1(bst);
-    GetItrValue(loctestnum, loctesterr, itr1, true, string("B"));
-    ++itr1;
-    GetItrValue(loctestnum, loctesterr, itr1, true, string("A"));
-    ++itr1;
-    GetItrValue(loctestnum, loctesterr, itr1, true, string("C"));
-    ++itr1;
-    GetItrValue(loctestnum, loctesterr, itr1, true, string("D"));
-    ++itr1;
-    GetItrValue(loctestnum, loctesterr, itr1, true, string("E"));
-    Terminated(loctestnum, loctesterr, itr1, false);
-    ++itr1;
-    Terminated(loctestnum, loctesterr, itr1, true);
-
-    MapPostOrder(loctestnum, loctesterr, bst, true, &MapPrint<string>, 0);
-
-    lasd::BTPostOrderIterator<string> itr2(bst);
-    GetItrValue(loctestnum, loctesterr, itr2, true, string("A"));
-    ++itr2;
-    GetItrValue(loctestnum, loctesterr, itr2, true, string("E"));
-    ++itr2;
-    GetItrValue(loctestnum, loctesterr, itr2, true, string("D"));
-    ++itr2;
-    GetItrValue(loctestnum, loctesterr, itr2, true, string("C"));
-    ++itr2;
-    GetItrValue(loctestnum, loctesterr, itr2, true, string("B"));
-    Terminated(loctestnum, loctesterr, itr2, false);
-    ++itr2;
-    Terminated(loctestnum, loctesterr, itr2, true);
-
-    MapBreadth(loctestnum, loctesterr, bst, true, &MapPrint<string>, 0);
-
-    lasd::BTBreadthIterator<string> itr3(bst);
-    GetItrValue(loctestnum, loctesterr, itr3, true, string("B"));
-    ++itr3;
-    GetItrValue(loctestnum, loctesterr, itr3, true, string("A"));
-    ++itr3;
-    GetItrValue(loctestnum, loctesterr, itr3, true, string("C"));
-    ++itr3;
-    GetItrValue(loctestnum, loctesterr, itr3, true, string("D"));
-    ++itr3;
-    GetItrValue(loctestnum, loctesterr, itr3, true, string("E"));
-    Terminated(loctestnum, loctesterr, itr3, false);
-    ++itr3;
-    Terminated(loctestnum, loctesterr, itr3, true);
+    // MapPreOrder(loctestnum, loctesterr, bst, true, &MapPrint<string>, 0);
+    //
+    // lasd::BTPreOrderIterator<string> itr1(bst);
+    // GetItrValue(loctestnum, loctesterr, itr1, true, string("B"));
+    // ++itr1;
+    // GetItrValue(loctestnum, loctesterr, itr1, true, string("A"));
+    // ++itr1;
+    // GetItrValue(loctestnum, loctesterr, itr1, true, string("C"));
+    // ++itr1;
+    // GetItrValue(loctestnum, loctesterr, itr1, true, string("D"));
+    // ++itr1;
+    // GetItrValue(loctestnum, loctesterr, itr1, true, string("E"));
+    // Terminated(loctestnum, loctesterr, itr1, false);
+    // ++itr1;
+    // Terminated(loctestnum, loctesterr, itr1, true);
+    //
+    // MapPostOrder(loctestnum, loctesterr, bst, true, &MapPrint<string>, 0);
+    //
+    // lasd::BTPostOrderIterator<string> itr2(bst);
+    // GetItrValue(loctestnum, loctesterr, itr2, true, string("A"));
+    // ++itr2;
+    // GetItrValue(loctestnum, loctesterr, itr2, true, string("E"));
+    // ++itr2;
+    // GetItrValue(loctestnum, loctesterr, itr2, true, string("D"));
+    // ++itr2;
+    // GetItrValue(loctestnum, loctesterr, itr2, true, string("C"));
+    // ++itr2;
+    // GetItrValue(loctestnum, loctesterr, itr2, true, string("B"));
+    // Terminated(loctestnum, loctesterr, itr2, false);
+    // ++itr2;
+    // Terminated(loctestnum, loctesterr, itr2, true);
+    //
+    // MapBreadth(loctestnum, loctesterr, bst, true, &MapPrint<string>, 0);
+    //
+    // lasd::BTBreadthIterator<string> itr3(bst);
+    // GetItrValue(loctestnum, loctesterr, itr3, true, string("B"));
+    // ++itr3;
+    // GetItrValue(loctestnum, loctesterr, itr3, true, string("A"));
+    // ++itr3;
+    // GetItrValue(loctestnum, loctesterr, itr3, true, string("C"));
+    // ++itr3;
+    // GetItrValue(loctestnum, loctesterr, itr3, true, string("D"));
+    // ++itr3;
+    // GetItrValue(loctestnum, loctesterr, itr3, true, string("E"));
+    // Terminated(loctestnum, loctesterr, itr3, false);
+    // ++itr3;
+    // Terminated(loctestnum, loctesterr, itr3, true);
 
     MapInOrder(loctestnum, loctesterr, bst, true, &MapPrint<string>, 0);
 
@@ -294,9 +299,9 @@ void stestBSTString(uint& testnum, uint& testerr) {
     ++itr4;
     Terminated(loctestnum, loctesterr, itr4, true);
 
-    FoldPreOrder(loctestnum, loctesterr, bst, true, &FoldStringConcatenate, string(""), string("?"), string("?BACDE"));
-    FoldPostOrder(loctestnum, loctesterr, bst, true, &FoldStringConcatenate, string(""), string("?"), string("?AEDCB"));
-    FoldBreadth(loctestnum, loctesterr, bst, true, &FoldStringConcatenate, string(""), string("?"), string("?BACDE"));
+    // FoldPreOrder(loctestnum, loctesterr, bst, true, &FoldStringConcatenate, string(""), string("?"), string("?BACDE"));
+    // FoldPostOrder(loctestnum, loctesterr, bst, true, &FoldStringConcatenate, string(""), string("?"), string("?AEDCB"));
+    // FoldBreadth(loctestnum, loctesterr, bst, true, &FoldStringConcatenate, string(""), string("?"), string("?BACDE"));
     FoldInOrder(loctestnum, loctesterr, bst, true, &FoldStringConcatenate, string(""), string("?"), string("?ABCDE"));
   } catch(...) {
     loctestnum++; loctesterr++;
