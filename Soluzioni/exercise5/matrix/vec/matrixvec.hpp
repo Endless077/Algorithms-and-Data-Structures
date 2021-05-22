@@ -6,7 +6,7 @@
 
 #include "../matrix.hpp"
 
-// #include "../../vector/vector.hpp"
+#include "../../vector/vector.hpp"
 
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@ namespace lasd {
 /* ************************************************************************** */
 
 template <typename Data>
-class MatrixVec { // Must extend Matrix<Data>
+class MatrixVec : virtual public Matrix<Data>,
+                  virtual protected Vector<Data> { // Must extend Matrix<Data>
 
 private:
 
@@ -23,7 +24,8 @@ private:
 
 protected:
 
-  // using Matrix<Data>::???;
+  using Matrix<Data>::colSize;
+  using Matrix<Data>::rowSize;
 
   // ...
 

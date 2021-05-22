@@ -440,8 +440,8 @@ void stestVectorList(uint& testnum, uint& testerr) {
 
 void testSimpleExercise1() {
   uint testnum = 0, testerr = 0;
-  stestVector(testnum, testerr);
-  stestList(testnum, testerr);
-  stestVectorList(testnum, testerr);
+  //stestVector(testnum, testerr);
+  //stestList(testnum, testerr);
+  //stestVectorList(testnum, testerr);
   cout << endl << "Exercise 1 (Simple Test) (Errors/Tests: " << testerr << "/" << testnum << ")" << endl;
 }
