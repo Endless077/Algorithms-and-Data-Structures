@@ -1,0 +1,3 @@
+
+void testFullExercise3() {
+}
