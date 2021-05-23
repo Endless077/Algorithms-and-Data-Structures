@@ -114,7 +114,7 @@ void StackVec<Data>::Push(Data &&data) noexcept {
 template <typename Data>
 Data& StackVec<Data>::Top() const {
     if (Size()==0)
-        throw std::length_error("Accesso al Top di uno Stack vuoto.");
+        throw std::length_error("Access to the Top of an empty stack.");
 
     return Elements[index - 1];
 }
@@ -123,7 +123,7 @@ Data& StackVec<Data>::Top() const {
 template <typename Data>
 void StackVec<Data>::Pop() {
     if (Size()==0)
-        throw std::length_error("Accesso al Top di uno Stack vuoto.");
+        throw std::length_error("Access to the Top of an empty stack.");
 
     --index;
 
@@ -164,5 +164,7 @@ void StackVec<Data>::Clear() {
   initialize();
   index=0;
 }
+
+/* ************************************************************************** */
 
 }

@@ -65,7 +65,7 @@ void QueueLst<Data>::Enqueue(Data &&data) {
 template <typename Data>
 Data& QueueLst<Data>::Head() const {
   if (List<Data>::Empty())
-    throw std::length_error("Accesso alla Head di una Queue vuota.");
+    throw std::length_error("Access to Head of an empty queue.");
 
   return List<Data>::Front();
 }
@@ -74,7 +74,7 @@ Data& QueueLst<Data>::Head() const {
 template <typename Data>
 void QueueLst<Data>::Dequeue() {
   if (List<Data>::Empty())
-    throw std::length_error("Accesso alla Head di una Queue vuota.");
+    throw std::length_error("Access to Head of an empty queue.");
 
   List<Data>::RemoveFromFront();
 }
@@ -83,11 +83,13 @@ void QueueLst<Data>::Dequeue() {
 template <typename Data>
 Data QueueLst<Data>::HeadNDequeue() {
   if (List<Data>::Empty())
-    throw std::length_error("Accesso alla Head di una Queue vuota.");
+    throw std::length_error("Access to Head of an empty queue.");
   
   Data value = this->Head();
   Dequeue();
   return value;
 }
+
+/* *************************************************************************** */
 
 }

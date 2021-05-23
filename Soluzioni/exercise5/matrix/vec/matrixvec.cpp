@@ -1,3 +1,4 @@
+#include <stdexcept>
 
 namespace lasd {
 
@@ -141,13 +142,14 @@ Data& MatrixVec<Data>::operator()(const ulong i, const ulong j) {
 
 template <typename Data>
 const Data& MatrixVec<Data>::operator()(const ulong i, const ulong j) const {
-    //Eccezione std::out_of_range appartenente a Vector.
+    //Exception std::out_of_range throw by Vector.
     return Vector<Data>::operator[](i*colSize+j);
 }
 
 /* ************************************************************************ */
 
 // Specific member functions (inherited from Container)
+
 template <typename Data>
 void MatrixVec<Data>::Clear() {
     Vector<Data>::Clear();

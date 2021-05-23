@@ -1,134 +1,134 @@
-==31019== Memcheck, a memory error detector
-==31019== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==31019== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
-==31019== Command: ./main
-==31019== Parent PID: 31018
-==31019== 
---31019-- 
---31019-- Valgrind options:
---31019--    --leak-check=full
---31019--    --show-leak-kinds=all
---31019--    --track-origins=yes
---31019--    --verbose
---31019--    --log-file=valgrind-out.txt
---31019-- Contents of /proc/version:
---31019--   Linux version 5.4.72-microsoft-standard-WSL2 (oe-user@oe-host) (gcc version 8.2.0 (GCC)) #1 SMP Wed Oct 28 23:40:43 UTC 2020
---31019-- 
---31019-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
---31019-- Page sizes: currently 4096, max supported 4096
---31019-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
---31019-- Reading syms from /home/fsociety/Librerie/Soluzioni/exercise3/main
---31019-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
---31019--   Considering /usr/lib/x86_64-linux-gnu/ld-2.31.so ..
---31019--   .. CRC mismatch (computed 975d0390 wanted 30bd717f)
---31019--   Considering /lib/x86_64-linux-gnu/ld-2.31.so ..
---31019--   .. CRC mismatch (computed 975d0390 wanted 30bd717f)
---31019--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.31.so ..
---31019--   .. CRC is valid
---31019-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
---31019--    object doesn't have a symbol table
---31019--    object doesn't have a dynamic symbol table
---31019-- Scheduler: using generic scheduler lock implementation.
---31019-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
-==31019== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-31019-by-fsociety-on-???
-==31019== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-31019-by-fsociety-on-???
-==31019== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-31019-by-fsociety-on-???
-==31019== 
-==31019== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==31019== don't want to do, unless you know exactly what you're doing,
-==31019== or are doing some strange experiment):
-==31019==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=31019 ...command...
-==31019== 
-==31019== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==31019==   /path/to/gdb ./main
-==31019== and then give GDB the following command
-==31019==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=31019
-==31019== --pid is optional if only one valgrind process is running
-==31019== 
---31019-- REDIR: 0x4022e10 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
---31019-- REDIR: 0x4022be0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
---31019-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
---31019--    object doesn't have a symbol table
---31019-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
---31019--    object doesn't have a symbol table
-==31019== WARNING: new redirection conflicts with existing -- ignoring it
---31019--     old: 0x04022e10 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
---31019--     new: 0x04022e10 (strlen              ) R-> (2007.0) 0x0483f060 strlen
---31019-- REDIR: 0x401f5f0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
---31019-- REDIR: 0x4023370 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
---31019-- Reading syms from /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
---31019--    object doesn't have a symbol table
---31019-- Reading syms from /usr/lib/x86_64-linux-gnu/libm-2.31.so
---31019--   Considering /usr/lib/x86_64-linux-gnu/libm-2.31.so ..
---31019--   .. CRC mismatch (computed fcb42c76 wanted f6c95789)
---31019--   Considering /lib/x86_64-linux-gnu/libm-2.31.so ..
---31019--   .. CRC mismatch (computed fcb42c76 wanted f6c95789)
---31019--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libm-2.31.so ..
---31019--   .. CRC is valid
---31019-- Reading syms from /usr/lib/x86_64-linux-gnu/libgcc_s.so.1
---31019--    object doesn't have a symbol table
---31019-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
---31019--   Considering /usr/lib/x86_64-linux-gnu/libc-2.31.so ..
---31019--   .. CRC mismatch (computed 86b78530 wanted e380f01c)
---31019--   Considering /lib/x86_64-linux-gnu/libc-2.31.so ..
---31019--   .. CRC mismatch (computed 86b78530 wanted e380f01c)
---31019--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.31.so ..
---31019--   .. CRC is valid
---31019-- REDIR: 0x4c42600 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c41900 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c42930 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c41220 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c41960 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c43dd0 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c5ee60 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c5e9a0 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c42760 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c42590 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c41890 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c412d0 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c426c0 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c5e960 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c417f0 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c413b0 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c42980 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c41350 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c42ad0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c600d0 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c5e9e0 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c419a0 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c41280 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c417b0 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c4ad20 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c429d0 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c42550 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c5eab0 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c41c60 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c428d0 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c42870 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c43e10 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4c42a20 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---31019-- REDIR: 0x4d2a490 (libc.so.6:__strrchr_avx2) redirected to 0x483ea10 (rindex)
---31019-- REDIR: 0x4c3c260 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
---31019-- REDIR: 0x4d2a660 (libc.so.6:__strlen_avx2) redirected to 0x483ef40 (strlen)
---31019-- REDIR: 0x4d26c50 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x48421e0 (bcmp)
---31019-- REDIR: 0x4d25b60 (libc.so.6:__strcmp_avx2) redirected to 0x483fed0 (strcmp)
---31019-- REDIR: 0x4d2d650 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4843660 (mempcpy)
---31019-- REDIR: 0x48fec10 (libstdc++.so.6:operator new(unsigned long)) redirected to 0x483bdf0 (operator new(unsigned long))
---31019-- REDIR: 0x4d2d670 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x48429f0 (memmove)
---31019-- REDIR: 0x48fce60 (libstdc++.so.6:operator delete(void*)) redirected to 0x483cf50 (operator delete(void*))
---31019-- REDIR: 0x4c3c850 (libc.so.6:free) redirected to 0x483c9d0 (free)
---31019-- REDIR: 0x4d2a2a0 (libc.so.6:__strchrnul_avx2) redirected to 0x4843540 (strchrnul)
---31019-- REDIR: 0x48fec70 (libstdc++.so.6:operator new[](unsigned long)) redirected to 0x483c510 (operator new[](unsigned long))
---31019-- REDIR: 0x48fce90 (libstdc++.so.6:operator delete[](void*)) redirected to 0x483d6e0 (operator delete[](void*))
---31019-- REDIR: 0x4d264c0 (libc.so.6:__memchr_avx2) redirected to 0x4840050 (memchr)
---31019-- REDIR: 0x48fcea0 (libstdc++.so.6:operator delete[](void*, unsigned long)) redirected to 0x483d8f0 (operator delete[](void*, unsigned long))
---31019-- REDIR: 0x48fce70 (libstdc++.so.6:operator delete(void*, unsigned long)) redirected to 0x483d160 (operator delete(void*, unsigned long))
---31019-- REDIR: 0x4d2daf0 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x48428e0 (memset)
-==31019== 
-==31019== HEAP SUMMARY:
-==31019==     in use at exit: 0 bytes in 0 blocks
-==31019==   total heap usage: 318 allocs, 318 frees, 90,379 bytes allocated
-==31019== 
-==31019== All heap blocks were freed -- no leaks are possible
-==31019== 
-==31019== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==12063== Memcheck, a memory error detector
+==12063== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==12063== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==12063== Command: ./main
+==12063== Parent PID: 12062
+==12063== 
+--12063-- 
+--12063-- Valgrind options:
+--12063--    --leak-check=full
+--12063--    --show-leak-kinds=all
+--12063--    --track-origins=yes
+--12063--    --verbose
+--12063--    --log-file=valgrind-out.txt
+--12063-- Contents of /proc/version:
+--12063--   Linux version 5.4.72-microsoft-standard-WSL2 (oe-user@oe-host) (gcc version 8.2.0 (GCC)) #1 SMP Wed Oct 28 23:40:43 UTC 2020
+--12063-- 
+--12063-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
+--12063-- Page sizes: currently 4096, max supported 4096
+--12063-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--12063-- Reading syms from /home/fsociety/Librerie/Soluzioni/exercise3/main
+--12063-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--12063--   Considering /usr/lib/x86_64-linux-gnu/ld-2.31.so ..
+--12063--   .. CRC mismatch (computed 975d0390 wanted 30bd717f)
+--12063--   Considering /lib/x86_64-linux-gnu/ld-2.31.so ..
+--12063--   .. CRC mismatch (computed 975d0390 wanted 30bd717f)
+--12063--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.31.so ..
+--12063--   .. CRC is valid
+--12063-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--12063--    object doesn't have a symbol table
+--12063--    object doesn't have a dynamic symbol table
+--12063-- Scheduler: using generic scheduler lock implementation.
+--12063-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==12063== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-12063-by-fsociety-on-???
+==12063== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-12063-by-fsociety-on-???
+==12063== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-12063-by-fsociety-on-???
+==12063== 
+==12063== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==12063== don't want to do, unless you know exactly what you're doing,
+==12063== or are doing some strange experiment):
+==12063==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=12063 ...command...
+==12063== 
+==12063== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==12063==   /path/to/gdb ./main
+==12063== and then give GDB the following command
+==12063==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=12063
+==12063== --pid is optional if only one valgrind process is running
+==12063== 
+--12063-- REDIR: 0x4022e10 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--12063-- REDIR: 0x4022be0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--12063-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--12063--    object doesn't have a symbol table
+--12063-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--12063--    object doesn't have a symbol table
+==12063== WARNING: new redirection conflicts with existing -- ignoring it
+--12063--     old: 0x04022e10 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--12063--     new: 0x04022e10 (strlen              ) R-> (2007.0) 0x0483f060 strlen
+--12063-- REDIR: 0x401f5f0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
+--12063-- REDIR: 0x4023370 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
+--12063-- Reading syms from /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+--12063--    object doesn't have a symbol table
+--12063-- Reading syms from /usr/lib/x86_64-linux-gnu/libm-2.31.so
+--12063--   Considering /usr/lib/x86_64-linux-gnu/libm-2.31.so ..
+--12063--   .. CRC mismatch (computed fcb42c76 wanted f6c95789)
+--12063--   Considering /lib/x86_64-linux-gnu/libm-2.31.so ..
+--12063--   .. CRC mismatch (computed fcb42c76 wanted f6c95789)
+--12063--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libm-2.31.so ..
+--12063--   .. CRC is valid
+--12063-- Reading syms from /usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+--12063--    object doesn't have a symbol table
+--12063-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--12063--   Considering /usr/lib/x86_64-linux-gnu/libc-2.31.so ..
+--12063--   .. CRC mismatch (computed 86b78530 wanted e380f01c)
+--12063--   Considering /lib/x86_64-linux-gnu/libc-2.31.so ..
+--12063--   .. CRC mismatch (computed 86b78530 wanted e380f01c)
+--12063--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.31.so ..
+--12063--   .. CRC is valid
+--12063-- REDIR: 0x4c42600 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c41900 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c42930 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c41220 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c41960 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c43dd0 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c5ee60 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c5e9a0 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c42760 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c42590 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c41890 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c412d0 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c426c0 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c5e960 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c417f0 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c413b0 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c42980 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c41350 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c42ad0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c600d0 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c5e9e0 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c419a0 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c41280 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c417b0 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c4ad20 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c429d0 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c42550 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c5eab0 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c41c60 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c428d0 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c42870 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c43e10 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4c42a20 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12063-- REDIR: 0x4d2a490 (libc.so.6:__strrchr_avx2) redirected to 0x483ea10 (rindex)
+--12063-- REDIR: 0x4c3c260 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
+--12063-- REDIR: 0x4d2a660 (libc.so.6:__strlen_avx2) redirected to 0x483ef40 (strlen)
+--12063-- REDIR: 0x4d26c50 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x48421e0 (bcmp)
+--12063-- REDIR: 0x4d25b60 (libc.so.6:__strcmp_avx2) redirected to 0x483fed0 (strcmp)
+--12063-- REDIR: 0x4d2d650 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4843660 (mempcpy)
+--12063-- REDIR: 0x48fec10 (libstdc++.so.6:operator new(unsigned long)) redirected to 0x483bdf0 (operator new(unsigned long))
+--12063-- REDIR: 0x4d2d670 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x48429f0 (memmove)
+--12063-- REDIR: 0x48fce60 (libstdc++.so.6:operator delete(void*)) redirected to 0x483cf50 (operator delete(void*))
+--12063-- REDIR: 0x4c3c850 (libc.so.6:free) redirected to 0x483c9d0 (free)
+--12063-- REDIR: 0x4d2a2a0 (libc.so.6:__strchrnul_avx2) redirected to 0x4843540 (strchrnul)
+--12063-- REDIR: 0x48fec70 (libstdc++.so.6:operator new[](unsigned long)) redirected to 0x483c510 (operator new[](unsigned long))
+--12063-- REDIR: 0x48fce90 (libstdc++.so.6:operator delete[](void*)) redirected to 0x483d6e0 (operator delete[](void*))
+--12063-- REDIR: 0x4d264c0 (libc.so.6:__memchr_avx2) redirected to 0x4840050 (memchr)
+--12063-- REDIR: 0x48fcea0 (libstdc++.so.6:operator delete[](void*, unsigned long)) redirected to 0x483d8f0 (operator delete[](void*, unsigned long))
+--12063-- REDIR: 0x48fce70 (libstdc++.so.6:operator delete(void*, unsigned long)) redirected to 0x483d160 (operator delete(void*, unsigned long))
+--12063-- REDIR: 0x4d2daf0 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x48428e0 (memset)
+==12063== 
+==12063== HEAP SUMMARY:
+==12063==     in use at exit: 0 bytes in 0 blocks
+==12063==   total heap usage: 318 allocs, 318 frees, 90,336 bytes allocated
+==12063== 
+==12063== All heap blocks were freed -- no leaks are possible
+==12063== 
+==12063== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

@@ -127,7 +127,7 @@ Data& Vector<Data>::Front() const {
 		return Elements[0];
 	}
 	else {
-		throw std::length_error("Accesso ad un vettore vuoto.");
+		throw std::length_error("Access to an empty vector.");
 	}
 }
 
@@ -138,7 +138,7 @@ Data& Vector<Data>::Back() const {
 		return Elements[size - 1];
 	}
 	else {
-	    throw std::length_error("Accesso ad un vettore vuoto.");
+	    throw std::length_error("Access to an empty vector.");
 	}
 }
 
@@ -149,7 +149,7 @@ Data& Vector<Data>::operator[](const ulong index) const {
     return Elements[index];
   }
   else {
-    throw std::out_of_range("Accesso a indice " + std::to_string(index) + "; vector size " + std::to_string(size) + ".");
+    throw std::out_of_range("Access at index " + std::to_string(index) + "; vector size " + std::to_string(size) + ".");
   }
 }
 

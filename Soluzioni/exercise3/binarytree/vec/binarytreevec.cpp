@@ -39,7 +39,7 @@ bool BinaryTreeVec<Data>::NodeVec::HasRightChild() const noexcept {
 template <typename Data>
 struct BinaryTreeVec<Data>::NodeVec& BinaryTreeVec<Data>::NodeVec::LeftChild() const {
     if(!HasLeftChild())
-        throw std::out_of_range("Accesso a figlio vuoto.");
+        throw std::out_of_range("Access to an empty child.");
 
     return *(vectorPointer->operator[](indexNode*2+1));
 }
@@ -47,7 +47,7 @@ struct BinaryTreeVec<Data>::NodeVec& BinaryTreeVec<Data>::NodeVec::LeftChild() c
 template <typename Data>
 struct BinaryTreeVec<Data>::NodeVec& BinaryTreeVec<Data>::NodeVec::RightChild() const {
     if(!HasRightChild())
-        throw std::out_of_range("Accesso a figlio vuoto.");
+        throw std::out_of_range("Access to an empty child.");
 
     return *(vectorPointer->operator[](indexNode*2+2));
 
@@ -143,7 +143,7 @@ bool BinaryTreeVec<Data>::operator!=(const BinaryTreeVec<Data> &bt) const noexce
 template <typename Data>
 struct BinaryTreeVec<Data>::NodeVec& BinaryTreeVec<Data>::Root() const {
     if(size==0)
-        throw std::length_error("Accesso ad albero vuoto.");
+        throw std::length_error("Access to an empty binary tree.");
 
     return *(treevector->operator[](0));
 }

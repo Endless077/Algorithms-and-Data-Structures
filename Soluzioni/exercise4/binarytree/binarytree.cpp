@@ -361,7 +361,7 @@ template <typename Data>
 BTPreOrderIterator<Data>& BTPreOrderIterator<Data>::operator++() {
     
     if(Terminated())
-        throw std::out_of_range("Iteratore PreOrder terminato.");
+        throw std::out_of_range("Iterator PreOrder terminated.");
 
     if(current->HasRightChild())
         stk.Push(&(current->RightChild()));
@@ -487,7 +487,7 @@ bool BTInOrderIterator<Data>::Terminated() const noexcept {
 template <typename Data>
 BTInOrderIterator<Data>& BTInOrderIterator<Data>::operator++() {
     if(Terminated())
-        throw std::out_of_range("Iteratore InOrder terminato.");
+        throw std::out_of_range("Iterator InOrder terminated.");
         
     if(current->HasRightChild()){
         current = &(current->RightChild());
@@ -627,7 +627,7 @@ bool BTPostOrderIterator<Data>::Terminated() const noexcept {
 template <typename Data>
 BTPostOrderIterator<Data>& BTPostOrderIterator<Data>::operator++() {
     if(Terminated())
-        throw std::out_of_range("Iteratore PostOrder terminato.");
+        throw std::out_of_range("Iterator PostOrder terminated.");
 
     if(stk.Empty()){
         current = nullptr;
@@ -643,19 +643,6 @@ BTPostOrderIterator<Data>& BTPostOrderIterator<Data>::operator++() {
     last = current;
     return (*this);
 }
-
-/* ************************************************************************ */
-/* if(stk.Empty()){
-            current = nullptr;
-        }else{
-            current = stk.TopNPop();
-            if(current->HasRightChild()) {
-                stk.Push(current);
-                current = &(current->RightChild());
-                getMostLeftLeaf();
-            }
-        } */
-
 
 /* ************************************************************************** */
 /*                              Iterator Breadth                              */
@@ -753,7 +740,7 @@ template <typename Data>
 BTBreadthIterator<Data>& BTBreadthIterator<Data>::operator++() {
     
     if(Terminated())
-        throw std::out_of_range("Iteratore Ampiezza terminato.");
+        throw std::out_of_range("Iterator Ampiezza terminated.");
     
     if(current->HasLeftChild())
         que.Enqueue(&(current->LeftChild()));

@@ -136,7 +136,7 @@ void QueueVec<Data>::Enqueue(Data &&data) {
 template <typename Data>
 Data& QueueVec<Data>::Head() const {
     if (Size()==0)
-        throw std::length_error("Accesso alla Head di una Queue vuota.");
+        throw std::length_error("Access to the Head of an empty queue.");
 
     return Elements[front];
 }
@@ -145,7 +145,7 @@ Data& QueueVec<Data>::Head() const {
 template <typename Data>
 void QueueVec<Data>::Dequeue() {
     if (Size()==0)
-        throw std::length_error("Accesso alla Head di una Queue vuota.");
+        throw std::length_error("Access to the Head of an empty queue.");
 
     front = (front + 1) % size;
     
@@ -158,7 +158,7 @@ void QueueVec<Data>::Dequeue() {
 template <typename Data>
 Data QueueVec<Data>::HeadNDequeue() {
     if (Size()==0)
-        throw std::length_error("Accesso alla Head di una Queue vuota.");
+        throw std::length_error("Access to the Head of an empty queue.");
 
     Data &data = Elements[front];
     front = (front + 1) % (size+1);
@@ -175,10 +175,10 @@ Data QueueVec<Data>::HeadNDequeue() {
 //Specific member functions (inherited from Container)
 
 template <typename Data>
-bool QueueVec<Data>::Empty() const noexcept { return (Size()==0); } // Override Container member
+bool QueueVec<Data>::Empty() const noexcept { return (Size()==0); }
 
 template <typename Data>
-ulong QueueVec<Data>::Size() const noexcept{ return ((rear+size) - front + 1) % size; } // Override Container member
+ulong QueueVec<Data>::Size() const noexcept{ return ((rear+size) - front + 1) % size; }
 
 template <typename Data>
 void QueueVec<Data>::Clear() { 
@@ -186,8 +186,7 @@ void QueueVec<Data>::Clear() {
     initialize();
     rear = 0; 
     front = 1;
-} // Override Container member
-
+}
 
 /* ************************************************************************** */
 

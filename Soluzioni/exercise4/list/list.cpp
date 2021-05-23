@@ -219,7 +219,7 @@ namespace lasd
 		}
 		else
 		{
-			throw std::length_error("Accesso ad una lista vuota.");
+			throw std::length_error("Access to an empty list.");
 		}
 	}
 
@@ -238,7 +238,7 @@ namespace lasd
 		}
 		else
 		{
-			throw std::length_error("Accesso ad una lista vuota.");
+			throw std::length_error("Access to an empty list.");
 		}
 	}
 
@@ -310,7 +310,7 @@ namespace lasd
 		}
 		else
 		{
-			throw std::length_error("Accesso ad una lista vuota vuota.");
+			throw std::length_error("Access to an empty list.");
 		}
 	}
 
@@ -324,7 +324,7 @@ namespace lasd
 		}
 		else
 		{
-			throw std::length_error("Accesso ad una lista vuota vuota.");
+			throw std::length_error("Access to an empty list.");
 		}
 	}
 
@@ -343,7 +343,7 @@ namespace lasd
 		}
 		else
 		{
-			throw std::out_of_range("Accesso ad indice: " + std::to_string(index) + " non consentito, list size:" + std::to_string(size));
+			throw std::out_of_range("Access at index " + std::to_string(index) + "; list size:" + std::to_string(size));
 		}
 	}
 

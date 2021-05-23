@@ -63,7 +63,7 @@ void StackLst<Data>::Push(Data &&data) noexcept {
 template <typename Data>
 Data& StackLst<Data>::Top() const {
   if (List<Data>::Empty())
-    throw std::length_error("Accesso al Top di uno Stack vuoto.");
+    throw std::length_error("Access to the Top of an empty stack.");
 
   return this->Front();
 }
@@ -72,7 +72,7 @@ Data& StackLst<Data>::Top() const {
 template <typename Data>
 void StackLst<Data>::Pop() {
   if (List<Data>::Empty())
-    throw std::length_error("Accesso al Top di uno Stack vuoto.");
+    throw std::length_error("Access to the Top of an empty stack.");
 
   const Data &data = this->Front();
 

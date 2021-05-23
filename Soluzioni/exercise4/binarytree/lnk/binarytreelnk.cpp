@@ -46,7 +46,7 @@ bool BinaryTreeLnk<Data>::NodeLnk::HasRightChild() const noexcept {
 template <typename Data>
 struct BinaryTreeLnk<Data>::NodeLnk& BinaryTreeLnk<Data>::NodeLnk::LeftChild() const {
     if(leftchild==nullptr)
-        throw std::out_of_range("Accesso a figlio vuoto.");
+        throw std::out_of_range("Access to an empty child.");
 
     return *leftchild;
 }
@@ -54,7 +54,7 @@ struct BinaryTreeLnk<Data>::NodeLnk& BinaryTreeLnk<Data>::NodeLnk::LeftChild() c
 template <typename Data>
 struct BinaryTreeLnk<Data>::NodeLnk& BinaryTreeLnk<Data>::NodeLnk::RightChild() const {
     if(rightchild==nullptr)
-        throw std::out_of_range("Accesso a figlio vuoto.");
+        throw std::out_of_range("Access to an empty child.");
 
     return *rightchild;
 }
@@ -172,7 +172,7 @@ bool BinaryTreeLnk<Data>::operator!=(const BinaryTreeLnk<Data> &bt) const noexce
 template <typename Data>
 struct BinaryTreeLnk<Data>::NodeLnk& BinaryTreeLnk<Data>::Root() const {
     if(root==nullptr)
-        throw std::length_error("Accesso ad albero vuoto.");
+        throw std::length_error("Access to an empty tree.");
 
     return *root;
 }

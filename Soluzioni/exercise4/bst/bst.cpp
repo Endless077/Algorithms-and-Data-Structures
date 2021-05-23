@@ -102,7 +102,7 @@ void BST<Data>::Remove(const Data &dato) noexcept {
 template <typename Data>
 const Data& BST<Data>::Min() const {
     if(root==nullptr)
-        throw std::length_error("Accesso ad un albero vuoto.");
+        throw std::length_error("Access to an empty BST.");
 
     return FindPointerToMin(root)->element;
 }
@@ -110,7 +110,7 @@ const Data& BST<Data>::Min() const {
 template <typename Data>
 Data BST<Data>::MinNRemove() {
     if(root==nullptr)
-        throw std::length_error("Accesso ad un albero vuoto.");
+        throw std::length_error("Access to an empty BST.");
     
     return DataNDelete(DetachMin(root));
 }
@@ -118,7 +118,7 @@ Data BST<Data>::MinNRemove() {
 template <typename Data>
 void BST<Data>::RemoveMin() {
     if(root==nullptr)
-        throw std::length_error("Accesso ad un albero vuoto.");
+        throw std::length_error("Access to an empty BST.");
 
     delete DetachMin(root);    
 }
@@ -129,7 +129,7 @@ void BST<Data>::RemoveMin() {
 template <typename Data>
 const Data& BST<Data>::Max() const {
     if(root==nullptr)
-        throw std::length_error("Accesso ad un albero vuoto.");
+        throw std::length_error("Access to an empty BST.");
     
     return FindPointerToMax(root)->element;
 }
@@ -137,7 +137,7 @@ const Data& BST<Data>::Max() const {
 template <typename Data>
 Data BST<Data>::MaxNRemove() {
     if(root==nullptr)
-        throw std::length_error("Accesso ad un albero vuoto.");
+        throw std::length_error("Access to an empty BST.");
     
     return DataNDelete(DetachMax(root));
 }
@@ -145,7 +145,7 @@ Data BST<Data>::MaxNRemove() {
 template <typename Data>
 void BST<Data>::RemoveMax() {
     if(root==nullptr)
-        throw std::length_error("Accesso ad un albero vuoto.");
+        throw std::length_error("Access to an empty BST.");
     
     delete DetachMax(root);
 }
@@ -157,7 +157,7 @@ template <typename Data>
 const Data& BST<Data>::Predecessor(const Data &dato) const {
     struct BST<Data>::NodeLnk* const& pointer = FindPointerToPredecessor(root, dato);
     if(&pointer==nullptr)
-        throw std::length_error("Predecessor non trovato.");
+        throw std::length_error("Predecessor not found.");
 
     return (pointer)->element;   
 }
@@ -166,7 +166,7 @@ template <typename Data>
 Data BST<Data>::PredecessorNRemove(const Data &dato) {
     struct BST<Data>::NodeLnk*& pointer = FindPointerToPredecessor(root, dato);
     if(&pointer==nullptr)
-        throw std::length_error("Predecessor non trovato.");
+        throw std::length_error("Predecessor not found.");
     
     return DataNDelete(Detach(pointer));
 }
@@ -175,7 +175,7 @@ template <typename Data>
 void BST<Data>::RemovePredecessor(const Data &dato) {
     struct BST<Data>::NodeLnk*& pointer = FindPointerToPredecessor(root, dato);
     if(&pointer==nullptr)
-        throw std::length_error("Predecessor non trovato.");
+        throw std::length_error("Predecessor not found.");
     
     delete Detach(pointer);
 }
@@ -187,7 +187,7 @@ template <typename Data>
 const Data& BST<Data>::Successor(const Data &dato) const {
     struct BST<Data>::NodeLnk* const& pointer = FindPointerToSuccessor(root, dato);
     if(&pointer==nullptr)
-        throw std::length_error("Successor non trovato.");
+        throw std::length_error("Successor not found.");
 
     return (pointer)->element;
 }
@@ -196,7 +196,7 @@ template <typename Data>
 Data BST<Data>::SuccessorNRemove(const Data &dato) {
     struct BST<Data>::NodeLnk*& pointer = FindPointerToSuccessor(root, dato);
     if(&pointer==nullptr)
-        throw std::length_error("Successor non trovato.");
+        throw std::length_error("Successor not found.");
 
     return DataNDelete(Detach(pointer));
 }
@@ -205,7 +205,7 @@ template <typename Data>
 void BST<Data>::RemoveSuccessor(const Data &dato) {
     struct BST<Data>::NodeLnk*& pointer = FindPointerToSuccessor(root, dato);
     if(&pointer==nullptr)
-        throw std::length_error("Successor non trovato.");
+        throw std::length_error("Successor not found.");
 
     delete Detach(pointer);
 }
