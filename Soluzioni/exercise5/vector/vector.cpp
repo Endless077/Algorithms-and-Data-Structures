@@ -149,7 +149,7 @@ Data& Vector<Data>::operator[](const ulong index) const {
     return Elements[index];
   }
   else {
-    throw std::out_of_range("Access at index " + std::to_string(index) + "; vector size " + std::to_string(size) + ".");
+    throw std::out_of_range("Accesso a indice " + std::to_string(index) + "; vector size " + std::to_string(size) + ".");
   }
 }
 

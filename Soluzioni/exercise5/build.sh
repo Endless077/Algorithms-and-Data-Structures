@@ -1,7 +1,7 @@
 
 #! /bin/bash
 
-g++ -O3 -o main \
+g++ -g -O3 -o main \
   zlasdtest/exercise1/simpletest.cpp zlasdtest/exercise1/fulltest.cpp \
   zlasdtest/exercise2/simpletest.cpp zlasdtest/exercise2/fulltest.cpp \
   zlasdtest/exercise3/simpletest.cpp zlasdtest/exercise3/fulltest.cpp \

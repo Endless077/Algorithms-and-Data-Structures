@@ -16,8 +16,8 @@ namespace lasd {
 /* ************************************************************************** */
 
 template <typename Data>
-class MatrixCSR : virtual public Matrix<Data> 
-                : virtual protected List<std::pair<Data,ulong>> { // Must extend Matrix<Data>
+class MatrixCSR : virtual public Matrix<Data>,
+                  virtual protected List<std::pair<Data,ulong>> { // Must extend Matrix<Data>
 
 private:
 
@@ -35,7 +35,7 @@ protected:
 public:
 
   // Default constructor
-  MatrixCSR() specifiers;
+  MatrixCSR();
 
   /* ************************************************************************ */
 
@@ -76,7 +76,7 @@ public:
   void RowResize(const ulong) override; // Override Matrix member
   void ColumnResize(const ulong) override; // Override Matrix member
 
-  bool ExistsCell() const noexcept override; // Override Matrix member (should not throw exceptions)
+  bool ExistsCell(const ulong, const ulong) const noexcept override; // Override Matrix member (should not throw exceptions)
 
   Data& operator()(const ulong, const ulong) override; // Override Matrix member (mutable access to the element; throw out_of_range when out of range)
   const Data& operator()(const ulong, const ulong) const override; // Override Matrix member (immutable access to the element; throw out_of_range when out of range and length_error when not present)
