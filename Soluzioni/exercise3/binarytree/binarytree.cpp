@@ -7,6 +7,7 @@ namespace lasd {
 /*                                  NODE                                      */
 /* ************************************************************************** */
 
+// Comparison operators
 template <typename Data>
 bool BinaryTree<Data>::Node::operator==(const Node &compareNode) const noexcept {
     

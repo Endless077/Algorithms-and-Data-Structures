@@ -4,6 +4,8 @@ namespace lasd {
 
 /* ************************************************************************** */
 
+// Constructor (default)
+
 // Specific constructors
 template <typename Data>
 BST<Data>::BST(const LinearContainer<Data> &con) {
@@ -102,7 +104,7 @@ void BST<Data>::Remove(const Data &dato) noexcept {
 template <typename Data>
 const Data& BST<Data>::Min() const {
     if(root==nullptr)
-        throw std::length_error("Access to an emprty BST.");
+        throw std::length_error("Access to an empty BST.");
 
     return FindPointerToMin(root)->element;
 }
@@ -110,7 +112,7 @@ const Data& BST<Data>::Min() const {
 template <typename Data>
 Data BST<Data>::MinNRemove() {
     if(root==nullptr)
-        throw std::length_error("Access to an emprty BST.");
+        throw std::length_error("Access to an empty BST.");
     
     return DataNDelete(DetachMin(root));
 }
@@ -118,7 +120,7 @@ Data BST<Data>::MinNRemove() {
 template <typename Data>
 void BST<Data>::RemoveMin() {
     if(root==nullptr)
-        throw std::length_error("Access to an emprty BST.");
+        throw std::length_error("Access to an empty BST.");
 
     delete DetachMin(root);    
 }
@@ -129,7 +131,7 @@ void BST<Data>::RemoveMin() {
 template <typename Data>
 const Data& BST<Data>::Max() const {
     if(root==nullptr)
-        throw std::length_error("Access to an emprty BST.");
+        throw std::length_error("Access to an empty BST.");
     
     return FindPointerToMax(root)->element;
 }
@@ -137,7 +139,7 @@ const Data& BST<Data>::Max() const {
 template <typename Data>
 Data BST<Data>::MaxNRemove() {
     if(root==nullptr)
-        throw std::length_error("Access to an emprty BST.");
+        throw std::length_error("Access to an empty BST.");
     
     return DataNDelete(DetachMax(root));
 }
@@ -145,7 +147,7 @@ Data BST<Data>::MaxNRemove() {
 template <typename Data>
 void BST<Data>::RemoveMax() {
     if(root==nullptr)
-        throw std::length_error("Access to an emprty BST.");
+        throw std::length_error("Access to an empty BST.");
     
     delete DetachMax(root);
 }

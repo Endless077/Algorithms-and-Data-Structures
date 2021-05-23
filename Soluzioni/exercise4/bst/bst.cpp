@@ -4,6 +4,8 @@ namespace lasd {
 
 /* ************************************************************************** */
 
+// Constructor (default)
+
 // Specific constructors
 template <typename Data>
 BST<Data>::BST(const LinearContainer<Data> &con) {

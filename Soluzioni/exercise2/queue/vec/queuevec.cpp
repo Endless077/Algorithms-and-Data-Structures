@@ -15,13 +15,13 @@ void QueueVec<Data>::initialize(){
 
 /* ************************************************************************** */
 
-//Costructor
+//Constructor
 template <typename Data>
 QueueVec<Data>::QueueVec() {
     initialize();
 }
 
-//Costructor with LinearContainer
+//Constructor with LinearContainer
 template <typename Data>
 QueueVec<Data>::QueueVec(const LinearContainer<Data> &con) {
     
@@ -40,14 +40,14 @@ QueueVec<Data>::QueueVec(const LinearContainer<Data> &con) {
 
 /* ************************************************************************** */
 
-//Copy costructor
+//Copy constructor
 template <typename Data>
 QueueVec<Data>::QueueVec(const QueueVec<Data>& cpyVec) : Vector<Data>(cpyVec){
     front = cpyVec.front;
     rear = cpyVec.rear;
 }
 
-//Move costructor
+//Move constructor
 template <typename Data>
 QueueVec<Data>::QueueVec(QueueVec<Data>&& mvVec) noexcept {
     initialize();

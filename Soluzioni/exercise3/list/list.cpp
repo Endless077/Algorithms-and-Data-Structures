@@ -7,7 +7,7 @@ namespace lasd
 	/*                                  NODE                                      */
 	/* ************************************************************************** */
 
-	//Costructor with specifier Data - NODE (Copy)
+	//Constructor with specifier Data - NODE (Copy)
 	template <typename Data>
 	List<Data>::Node::Node(const Data &newData)
 	{
@@ -15,7 +15,7 @@ namespace lasd
 		next = nullptr;
 	}
 
-	//Costructor with specifier Data - NODE (Move)
+	//Constructor with specifier Data - NODE (Move)
 	template <typename Data>
 	List<Data>::Node::Node(Data &&dato)
 	{
@@ -23,7 +23,7 @@ namespace lasd
 		next = nullptr;
 	}
 
-	//Copy costructor - NODE
+	//Copy constructor - NODE
 	template <typename Data>
 	List<Data>::Node::Node(const Node &assNode)
 	{
@@ -31,7 +31,7 @@ namespace lasd
 		next = assNode.next;
 	}
 
-	//Move costructor - NODE
+	//Move constructor - NODE
 	template <typename Data>
 	List<Data>::Node::Node(const Node &&assNode) noexcept
 	{
@@ -61,7 +61,7 @@ namespace lasd
 	/*                                 LIST                                       */
 	/* ************************************************************************** */
 
-	//Costructor
+	//Constructor
 	//template <typename Data>
 	//List<Data>::List()
 	//{
@@ -70,7 +70,7 @@ namespace lasd
 	//	size = 0;
 	//}
 
-	//Costructor (with Linear Container)
+	//Constructor (with Linear Container)
 	template <typename Data>
 	List<Data>::List(const LinearContainer<Data> &container)
 	{
@@ -82,7 +82,7 @@ namespace lasd
 		}
 	}
 
-	//Copy costructor
+	//Copy constructor
 	template <typename Data>
 	List<Data>::List(const List<Data> &cpyList)
 	{
@@ -93,7 +93,7 @@ namespace lasd
 		}
 	}
 
-	//Move costructor
+	//Move constructor
 	template <typename Data>
 	List<Data>::List(List<Data> &&cpyList) noexcept
 	{
@@ -102,7 +102,7 @@ namespace lasd
 		std::swap(size, cpyList.size);
 	}
 
-	//Distructor
+	//Destructor
 	template <typename Data>
 	List<Data>::~List()
 	{

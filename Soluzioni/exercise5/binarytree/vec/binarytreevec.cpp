@@ -6,7 +6,7 @@ namespace lasd {
 /*                               NODE VEC                                     */
 /* ************************************************************************** */
 
-//Costructor
+// Constructor
 template <typename Data>
 BinaryTreeVec<Data>::NodeVec::NodeVec(Data &dato, ulong indice, Vector<NodeVec*> *vec) {
     element = dato;
@@ -57,7 +57,7 @@ struct BinaryTreeVec<Data>::NodeVec& BinaryTreeVec<Data>::NodeVec::RightChild() 
 /*                               TREE VEC                                     */
 /* ************************************************************************** */
 
-//Costructor (default)
+// Constructor (default)
 
 // Specific constructors
 template <typename Data>
@@ -143,14 +143,14 @@ bool BinaryTreeVec<Data>::operator!=(const BinaryTreeVec<Data> &bt) const noexce
 template <typename Data>
 struct BinaryTreeVec<Data>::NodeVec& BinaryTreeVec<Data>::Root() const {
     if(size==0)
-        throw std::length_error("Access to an empty tree.");
+        throw std::length_error("Access to an empty binary tree.");
 
     return *(treevector->operator[](0));
 }
 
 /* ************************************************************************ */
 
-//FoldBreadth
+// FoldBreadth
 template <typename Data>
 void BinaryTreeVec<Data>::FoldBreadth(const FoldFunctor fun, const void *par, void *acc) const {
     for(uint i = 0; i < size; i++) {
@@ -158,7 +158,7 @@ void BinaryTreeVec<Data>::FoldBreadth(const FoldFunctor fun, const void *par, vo
     }
 }
 
-//MapBreadth
+// MapBreadth
 template <typename Data>
 void BinaryTreeVec<Data>::MapBreadth(const MapFunctor fun, void *par) {
     for(uint i = 0; i < size; i++) {

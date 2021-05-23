@@ -4,15 +4,15 @@ namespace lasd {
 
 /* ************************************************************************** */
 
-//Costructor with LinearContainer
+//Constructor with LinearContainer
 template <typename Data>
 StackLst<Data>::StackLst(const LinearContainer<Data>& con) : List<Data>(con) {}
 
-//Copy costructor
+//Copy constructor
 template <typename Data>
 StackLst<Data>::StackLst(const StackLst<Data>& cpyList) : List<Data>(cpyList){}
 
-//Move costructor
+//Move constructor
 template <typename Data>
 StackLst<Data>::StackLst(StackLst<Data>&& mvList) noexcept : List<Data>(std::move(mvList)){}
 

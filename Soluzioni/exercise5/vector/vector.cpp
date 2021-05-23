@@ -4,7 +4,7 @@ namespace lasd {
 
 /* ************************************************************************** */
 
-//Costructor
+//Constructor
 template<typename Data>
 Vector<Data>::Vector(const ulong newsize){
     Elements = new Data[newsize] {};
@@ -23,7 +23,7 @@ Vector<Data>::Vector(const LinearContainer<Data>& con){
 
 /* ************************************************************************** */
 
-//Copy costructor
+//Copy constructor
 template<typename Data>
 Vector<Data>::Vector(const Vector<Data>& vec) {
 	Elements = new Data[vec.size];
@@ -31,7 +31,7 @@ Vector<Data>::Vector(const Vector<Data>& vec) {
 	size = vec.size;
 }
 
-//Move costuctor
+//Move constuctor
 template<typename Data>
 Vector<Data>::Vector(Vector<Data>&& vec) noexcept {
 	std::swap(Elements, vec.Elements);
@@ -40,7 +40,7 @@ Vector<Data>::Vector(Vector<Data>&& vec) noexcept {
 
 /* ************************************************************************** */
 
-//Distructor
+//Destructor
 template<typename Data>
 Vector<Data>::~Vector() {
 	delete[] Elements;

@@ -15,13 +15,13 @@ void StackVec<Data>::initialize(){
 
 /* ************************************************************************** */
 
-//Costructor
+//Constructor
 template <typename Data>
 StackVec<Data>::StackVec() : Vector<Data>() {
     initialize();
 }
 
-//Costructor with LinearContainer
+//Constructor with LinearContainer
 template <typename Data>
 StackVec<Data>::StackVec(const LinearContainer<Data> &con) : Vector<Data>(con) {
     index=con.Size();
@@ -30,13 +30,13 @@ StackVec<Data>::StackVec(const LinearContainer<Data> &con) : Vector<Data>(con) {
 
 /* ************************************************************************** */
 
-//Copy costructor
+//Copy constructor
 template <typename Data>
 StackVec<Data>::StackVec(const StackVec<Data>& cpyVec) : Vector<Data>(cpyVec){
     index=cpyVec.index;
 }
 
-//Move costructor
+//Move constructor
 template <typename Data>
 StackVec<Data>::StackVec(StackVec<Data>&& mvVec) noexcept {
     initialize();
@@ -65,7 +65,7 @@ StackVec<Data>& StackVec<Data>::operator=(StackVec<Data>&& assStack) {
 
 /* ************************************************************************** */
 
-// Comparison operators
+//Comparison operators
 template <typename Data>
 bool StackVec<Data>::operator==(const StackVec<Data> &vec) const {
     if (index == vec.index) {

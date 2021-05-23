@@ -6,7 +6,7 @@ namespace lasd {
 /*                              NODE  LINK                                    */
 /* ************************************************************************** */
 
-//Costructor
+//Constructor
 template <typename Data>
 BinaryTreeLnk<Data>::NodeLnk::NodeLnk(const Data &dato) {
     element=dato;
@@ -22,7 +22,6 @@ BinaryTreeLnk<Data>::NodeLnk::~NodeLnk() {
 }
 
 // Specific member functions
-
 template <typename Data>
 Data& BinaryTreeLnk<Data>::NodeLnk::Element() noexcept {
     return element;
