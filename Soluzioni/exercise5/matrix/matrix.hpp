@@ -22,8 +22,8 @@ private:
 
 protected:
 
-  ulong colSize;
-  ulong rowSize;
+  ulong colSize = 0;
+  ulong rowSize = 0;
 
   // ...
 
@@ -54,9 +54,9 @@ public:
   ulong inline ColumnNumber() const noexcept { return colSize; } // (concrete function should not throw exceptions)
 
   virtual void RowResize(const ulong) = 0;
-  virtual void ColumnResize() = 0;
+  virtual void ColumnResize(const ulong) = 0;
 
-  virtual boolean ExistsCell() const noexcept = 0; // (concrete function should not throw exceptions)
+  virtual bool ExistsCell() const noexcept = 0; // (concrete function should not throw exceptions)
 
   virtual Data& operator()(const ulong, const ulong) = 0; // Mutable access to the element (concrete function should throw exceptions only when out of range)
   virtual const Data& operator()(const ulong, const ulong) const = 0; // Immutable access to the element (concrete function should throw exceptions when not present)

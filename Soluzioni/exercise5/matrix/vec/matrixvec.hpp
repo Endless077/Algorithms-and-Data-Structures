@@ -32,61 +32,64 @@ protected:
 public:
 
   // Default constructor
-  // MatrixVec() specifiers;
+  MatrixVec();
 
   /* ************************************************************************ */
 
   // Specific constructors
-  // MatrixVec(argument) specifiers; // A matrix of some specified dimension
+  MatrixVec(const ulong, const ulong); // A matrix of some specified dimension
 
   /* ************************************************************************ */
 
   // Copy constructor
-  // MatrixVec(argument) specifiers;
+  MatrixVec(const MatrixVec&);
 
   // Move constructor
-  // MatrixVec(argument) specifiers;
+  MatrixVec(MatrixVec&&) noexcept;
 
   /* ************************************************************************ */
 
   // Destructor
-  // ~MatrixVec() specifiers;
+  virtual ~MatrixVec();
 
   /* ************************************************************************ */
 
   // Copy assignment
-  // type operator=(argument) specifiers;
+  MatrixVec& operator=(const MatrixVec&);
 
   // Move assignment
-  // type operator=(argument) specifiers;
+  MatrixVec& operator=(MatrixVec&&) noexcept;
 
   /* ************************************************************************ */
 
   // Comparison operators
-  // type operator==(argument) specifiers;
-  // type operator!=(argument) specifiers;
+  bool operator==(const MatrixVec&) const noexcept;
+  bool operator!=(const MatrixVec&) const noexcept;
 
   /* ************************************************************************ */
 
   // Specific member functions (inherited from Matrix)
 
-  // type RowResize() specifiers; // Override Matrix member
-  // type ColumnResize() specifiers; // Override Matrix member
+  void RowResize(const ulong) override; // Override Matrix member
+  void ColumnResize(const ulong) override; // Override Matrix member
 
-  // type ExistsCell() specifiers; // Override Matrix member (should not throw exceptions)
+  bool ExistsCell() const noexcept override; // Override Matrix member (should not throw exceptions)
 
-  // type operator()() specifiers; // Override Matrix member (mutable access to the element; throw out_of_range when out of range)
-  // type operator()() specifiers; // Override Matrix member (immutable access to the element; throw out_of_range when out of range and length_error when not present)
+  Data& operator()(const ulong, const ulong) override; // Override Matrix member (mutable access to the element; throw out_of_range when out of range)
+  const Data& operator()(const ulong, const ulong) const override; // Override Matrix member (immutable access to the element; throw out_of_range when out of range and length_error when not present)
 
   /* ************************************************************************ */
 
   // Specific member functions (inherited from Container)
 
-  // type Clear() specifiers; // Override Container member
+  void Clear() override; // Override Container member
 
   /* ************************************************************************ */
 
   // Specific member functions (inherited from MappableContainer)
+
+  using Vector<Data>::MapPreOrder;
+  using Vector<Data>::MapPostOrder;
 
   // type MapPreOrder(arguments) specifiers; // Override MappableContainer member
   // type MapPostOrder(arguments) specifiers; // Override MappableContainer member
@@ -94,6 +97,9 @@ public:
   /* ************************************************************************ */
 
   // Specific member functions (inherited from FoldableContainer)
+
+  using Vector<Data>::FoldPreOrder;
+  using Vector<Data>::FoldPostOrder;
 
   // type FoldPreOrder(arguments) specifiers; // Override FoldableContainer member
   // type FoldPostOrder(arguments) specifiers; // Override FoldableContainer member
