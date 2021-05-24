@@ -201,11 +201,11 @@ void stestMatrixInt(uint& testnum, uint& testerr) {
   cout << endl << "Begin of Matrix<long> Test" << endl;
   try {
     lasd::MatrixVec<long> matvec;
-    cout << endl << "Begin of MatrixVec<long> Test:" << endl;
-    stestMatrixInt(matvec, loctestnum, loctesterr);
-    //lasd::MatrixCSR<long> matcsr;
-    //cout << endl << "Begin of MatrixCSR<long> Test:" << endl;
-    //stestMatrixInt(matcsr, loctestnum, loctesterr);
+    //cout << endl << "Begin of MatrixVec<long> Test:" << endl;
+    //stestMatrixInt(matvec, loctestnum, loctesterr);
+    lasd::MatrixCSR<long> matcsr;
+    cout << endl << "Begin of MatrixCSR<long> Test:" << endl;
+    stestMatrixInt(matcsr, loctestnum, loctesterr);
     cout << "\n";
   } catch(...) {
     loctestnum++; loctesterr++;
@@ -266,12 +266,12 @@ void stestMatrixFloat(uint& testnum, uint& testerr) {
   uint loctestnum = 0, loctesterr = 0;
   cout << endl << "Begin of Matrix<double> Test" << endl;
   try {
-    lasd::MatrixVec<double> matvec(4, 3);
-    cout << endl << "Begin of MatrixVec<double> Test:" << endl;
-    stestMatrixFloat(matvec, loctestnum, loctesterr);
-    //lasd::MatrixCSR<double> matcsr(4, 3);
-    //cout << endl << "Begin of MatrixCSR<double> Test:" << endl;
-    //stestMatrixFloat(matcsr, loctestnum, loctesterr);
+    //lasd::MatrixVec<double> matvec(4, 3);
+    //cout << endl << "Begin of MatrixVec<double> Test:" << endl;
+    //stestMatrixFloat(matvec, loctestnum, loctesterr);
+    lasd::MatrixCSR<double> matcsr(4, 3);
+    cout << endl << "Begin of MatrixCSR<double> Test:" << endl;
+    stestMatrixFloat(matcsr, loctestnum, loctesterr);
     cout << "\n";
   } catch(...) {
     loctestnum++; loctesterr++;
@@ -327,12 +327,12 @@ void stestMatrixString(uint& testnum, uint& testerr) {
   uint loctestnum = 0, loctesterr = 0;
   cout << endl << "Begin of Matrix<string> Test" << endl;
   try {
-    lasd::MatrixVec<string> matvec(3, 3);
-    cout << endl << "Begin of MatrixVec<string> Test:" << endl;
-    stestMatrixString(matvec, loctestnum, loctesterr);
-    //lasd::MatrixCSR<string> matcsr(3, 3);
-    //cout << endl << "Begin of MatrixCSR<string> Test:" << endl;
-    //stestMatrixString(matcsr, loctestnum, loctesterr);
+    //lasd::MatrixVec<string> matvec(3, 3);
+    //cout << endl << "Begin of MatrixVec<string> Test:" << endl;
+    //stestMatrixString(matvec, loctestnum, loctesterr);
+    lasd::MatrixCSR<string> matcsr(3, 3);
+    cout << endl << "Begin of MatrixCSR<string> Test:" << endl;
+    stestMatrixString(matcsr, loctestnum, loctesterr);
     cout << "\n";
   } catch(...) {
     loctestnum++; loctesterr++;

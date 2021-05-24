@@ -24,11 +24,15 @@ private:
   // ...
 
 protected:
-
-  //Vector per le righe e fare setting dell'eredità di List...
   
+  using List<std::pair<Data,ulong>>::head;
+  using List<std::pair<Data,ulong>>::size;
+  using typename List<std::pair<Data,ulong>>::Node;
+
   using Matrix<Data>::colSize;
   using Matrix<Data>::rowSize;
+
+  Vector<Node**> rowVector;
 
   // ...
 
