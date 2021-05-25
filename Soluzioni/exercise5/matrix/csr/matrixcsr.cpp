@@ -112,17 +112,16 @@ void MatrixCSR<Data>::RowResize(const ulong newRow) {
 
     if(newRow > rowSize) {
         rowVector.Resize(newRow+1);
-        
         for(ulong i = rowSize+1; i <= newRow; i++)
             rowVector[i] = rowVector[rowSize];
 
     }else if(newRow < rowSize) {
         Node* ptr = *rowVector[newRow]; 
         while (ptr != nullptr) {
-				Node *tmp = ptr;
-				ptr = ptr->next;
-                size--;
-				delete tmp;
+			Node *tmp = ptr;
+			ptr = ptr->next;
+            size--;
+			delete tmp;
 		}
 
     rowVector.Resize(newRow+1);
@@ -133,7 +132,7 @@ void MatrixCSR<Data>::RowResize(const ulong newRow) {
 
 template <typename Data>
 void MatrixCSR<Data>::ColumnResize(const ulong newCol) {
-     if(newCol ==0){
+    if(newCol==0){
         List<std::pair<Data,ulong>>::Clear();
     }else if(newCol < colSize){
         ulong index = 1;
@@ -184,9 +183,9 @@ Data& MatrixCSR<Data>::operator()(const ulong i, const ulong j) {
     Node** curr = rowVector[i];
     Node** exit = rowVector[i+1];
     
-    while (curr!=exit && (*curr)->info.second < j) {
-        if((*curr)->info.second == j)
-            return (*curr)->info.first;
+    while (curr!=exit && (*curr)->info.second <= j) {
+        if(*curr!=nullptr && (*curr)->info.second == j)
+            return (*curr)->info.first;  
 
         curr = &(*curr)->next;
     }
@@ -195,9 +194,11 @@ Data& MatrixCSR<Data>::operator()(const ulong i, const ulong j) {
     *curr = new Node();
     (*curr)->info.second = j;
     (*curr)->next = tmp;
-
+    delete tmp;
+    
     if(curr==exit) {
         ulong index = i+1;
+
         for(Node** ptr = exit; (*ptr!=nullptr) && (ptr==exit); ptr = &(*ptr)->next) {
             rowVector[index] = &(*curr)->next;
             index++;
