@@ -104,13 +104,37 @@ bool MatrixCSR<Data>::operator!=(const MatrixCSR<Data> &matrix) const noexcept {
 template <typename Data>
 void MatrixCSR<Data>::RowResize(const ulong newRow) {
     if(newRow == 0) {
-        
+        List<std::pair<Data,ulong>>::Clear();
+        rowSize = 0;
+        rowVector.Resize(1);
+        return;
     }
+
+    if(newRow > rowSize) {
+        rowVector.Resize(newRow+1);
+        
+        for(ulong i = rowSize+1; i <= newRow; i++)
+            rowVector[i] = rowVector[rowSize];
+
+    }else if(newRow < rowSize) {
+        Node* ptr = *rowVector[newRow]; 
+        while (ptr != nullptr) {
+				Node *tmp = ptr;
+				ptr = ptr->next;
+                size--;
+				delete tmp;
+		}
+
+    rowVector.Resize(newRow+1);
+
+    }
+    rowSize = newRow;
 }
 
 template <typename Data>
 void MatrixCSR<Data>::ColumnResize(const ulong newCol) {
     if(newCol == 0) {
+        
         
     }
 }
@@ -138,8 +162,36 @@ Data& MatrixCSR<Data>::operator()(const ulong i, const ulong j) {
         throw std::out_of_range("Access to a out of range row/column.");
 
     Node** curr = rowVector[i];
+    Node** exit = rowVector[i+1];
+    
+    while (curr!=exit && (*curr)->info.second < j) {
+        curr = &(*curr)->next;
+    }
 
-    //insert
+    if((*curr)->info.second == j)
+        return (*curr)->info.first;
+
+    if(curr==exit) {
+        Node* tmp = *curr;
+        *curr = new Node();
+        (*curr)->info.second = j;
+        (*curr)->next = tmp;
+
+        ulong index = i+1;
+        for(Node** ptr = exit; (*ptr!=nullptr) && (ptr==exit); ptr = &(*ptr)->next) {
+            rowVector[index] = &(*curr)->next;
+            index++;
+        }
+    }
+
+    if((*curr)->info.second == j) {
+        Node* tmp = *curr;
+        *curr = new Node();
+        (*curr)->info.second = j;
+        (*curr)->next = tmp;
+    }
+
+    return (*curr)->info.first;
 }
 
 template <typename Data>
