@@ -117,17 +117,46 @@ void MatrixCSR<Data>::ColumnResize(const ulong newCol) {
 
 template <typename Data>
 bool MatrixCSR<Data>::ExistsCell(const ulong i, const ulong j) const noexcept {
+    if((i >= rowSize) && (j >= colSize))
+        return false;
 
+    Node** curr = rowVector[i];
+
+    while((curr!=rowVector[i+1]) && ((*curr)->info.second!=j)) {
+        if((*curr)->info.second == j)
+            return true;
+
+        curr = &((*curr)->next);
+    }
+
+    return false;
 }
 
 template <typename Data>
 Data& MatrixCSR<Data>::operator()(const ulong i, const ulong j) {
+    if((i >= rowSize) && (j >= colSize))
+        throw std::out_of_range("Access to a out of range row/column.");
 
+    Node** curr = rowVector[i];
+
+    //insert
 }
 
 template <typename Data>
 const Data& MatrixCSR<Data>::operator()(const ulong i, const ulong j) const {
+    if((i >= rowSize) && (j >= colSize))
+        throw std::out_of_range("Access to a out of range row/column.");
+    
+    Node** curr = rowVector[i];
 
+    while((curr!=rowVector[i+1]) && ((*curr)->info.second!=j)) {
+        if((*curr)->info.second == j)
+            return (*curr)->info.first;
+
+        curr = &((*curr)->next);
+    }
+
+    throw std::length_error("The cell does not exist.");
 }
 
 /* ************************************************************************ */
