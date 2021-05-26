@@ -40,19 +40,18 @@ MatrixCSR<Data>::MatrixCSR(const MatrixCSR<Data> &matrix) : MatrixCSR(matrix.row
 
 // Move constructor
 template <typename Data>
-MatrixCSR<Data>::MatrixCSR(MatrixCSR<Data> &&matrix) noexcept : MatrixCSR(matrix.rowSize, matrix.colSize) {
+MatrixCSR<Data>::MatrixCSR(MatrixCSR<Data> &&matrix) noexcept {
     std::swap(rowSize,matrix.rowSize);
     std::swap(colSize,matrix.colSize);
+    std::swap(size,matrix.size);
     std::swap(rowVector,matrix.rowVector);
     std::swap(head,matrix.head);
-}
 
-/* ************************************************************************ */
+    for (ulong index = 0; (index < size) && (rowVector[index]==&matrix.head); index++)
+        rowVector[index] = &head;
 
-// Destructor
-template <typename Data>
-MatrixCSR<Data>::~MatrixCSR() {
-    Clear();
+    for (ulong index = 0; (index < matrix.size) && (matrix.rowVector[index]==&head); index++)
+        matrix.rowVector[index] = &matrix.head;
 }
 
 /* ************************************************************************ */
@@ -71,13 +70,16 @@ template <typename Data>
 MatrixCSR<Data>& MatrixCSR<Data>::operator=(MatrixCSR<Data> &&matrix) noexcept {
     std::swap(rowSize,matrix.rowSize);
     std::swap(colSize,matrix.colSize);
+    std::swap(size,matrix.size);
     std::swap(rowVector,matrix.rowVector);
-    for (ulong index = 0; (index < size) && (rowVector[index]==&matrix.head); index++) {
+    std::swap(head,matrix.head);
+
+    for (ulong index = 0; (index < size) && (rowVector[index]==&matrix.head); index++)
         rowVector[index] = &head;
-    }
-    for (ulong index = 0; (index < matrix.size) && (matrix.rowVector[index]==&head); index++) {
+
+    for (ulong index = 0; (index < matrix.size) && (matrix.rowVector[index]==&head); index++)
         matrix.rowVector[index] = &matrix.head;
-    } 
+
     return *this;
 }
 
@@ -86,7 +88,7 @@ MatrixCSR<Data>& MatrixCSR<Data>::operator=(MatrixCSR<Data> &&matrix) noexcept {
 // Comparison operators
 template <typename Data>
 bool MatrixCSR<Data>::operator==(const MatrixCSR<Data> &matrix) const noexcept {
-    if((rowSize == matrix.rowSize) && (colSize==matrix.colSize))
+    if((rowSize == matrix.rowSize) && (colSize == matrix.colSize))
         return List<std::pair<Data,ulong>>::operator==(matrix);
     
     return false;
@@ -116,14 +118,22 @@ void MatrixCSR<Data>::RowResize(const ulong newRow) {
             rowVector[i] = rowVector[rowSize];
 
     }else if(newRow < rowSize) {
-        Node* ptr = *rowVector[newRow]; 
-        while (ptr != nullptr) {
-			Node *tmp = ptr;
-			ptr = ptr->next;
+        Node** ptr = rowVector[newRow]; 
+        while (*ptr != nullptr) {
+			Node *tmp = (*ptr)->next;
+            delete *ptr;
+            *ptr = nullptr;
+			ptr = &tmp;
             size--;
-			delete tmp;
 		}
 
+        ulong index = newRow+1;
+        while (index < rowSize && rowVector[index] == rowVector[index+1]) {   
+            rowVector[index] = rowVector[newRow+1];
+            index++;
+        }
+        rowVector[index] = rowVector[newRow];
+        
     rowVector.Resize(newRow+1);
 
     }
@@ -148,8 +158,11 @@ void MatrixCSR<Data>::ColumnResize(const ulong newCol) {
                 Node* tmp = *ptr;
                 *ptr = *exit;
                 *exit = nullptr;
-                for(Node* ptr = tmp; ptr != nullptr; ptr = ptr->next) {size --;}
-                delete tmp;
+                while(tmp != nullptr){
+                     Node* aux = tmp->next; 
+                     delete tmp; tmp = aux;
+                     size --;
+                }
             }
             for (;index<=rowSize && rowVector[index] == exit; index++)
                 rowVector[index]=ptr;
@@ -194,14 +207,15 @@ Data& MatrixCSR<Data>::operator()(const ulong i, const ulong j) {
     *curr = new Node();
     (*curr)->info.second = j;
     (*curr)->next = tmp;
+    size++;
     
     if(curr==exit) {
         ulong index = i+1;
-
-        for(Node** ptr = exit; (*ptr!=nullptr) && (ptr==exit); ptr = &(*ptr)->next) {
+        while (index < rowSize && rowVector[index] == rowVector[index+1]) {   
             rowVector[index] = &(*curr)->next;
             index++;
         }
+        rowVector[index] = &(*curr)->next;
     }
 
     return (*curr)->info.first;
@@ -215,7 +229,7 @@ const Data& MatrixCSR<Data>::operator()(const ulong i, const ulong j) const {
     Node** curr = rowVector[i];
     Node** exit = rowVector[i+1];
 
-    while((curr!=exit) && ((*curr)->info.second!=j)) {
+    while((curr!=exit) && ((*curr)->info.second<=j)) {
         if((*curr)->info.second == j)
             return (*curr)->info.first;
 
@@ -230,13 +244,10 @@ const Data& MatrixCSR<Data>::operator()(const ulong i, const ulong j) const {
 // Specific member functions (inherited from Container)
 template <typename Data>
 void MatrixCSR<Data>::Clear() {
-    if(head!=nullptr){
         List<std::pair<Data,ulong>>::Clear();
         rowVector.Resize(1);
-        rowVector[0] = &head;
         rowSize = 0;
         colSize = 0;
-    }
 }
 
 /* ************************************************************************ */
