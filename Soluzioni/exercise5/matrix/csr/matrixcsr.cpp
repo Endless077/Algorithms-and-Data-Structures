@@ -31,7 +31,7 @@ MatrixCSR<Data>::MatrixCSR(const ulong i, const ulong j) {
 template <typename Data>
 MatrixCSR<Data>::MatrixCSR(const MatrixCSR<Data> &matrix) : MatrixCSR(matrix.rowSize, matrix.colSize) {
     for (ulong i = 0; i < rowSize; i++) {
-        for(Node** curr = matrix.rowVector[i]; curr != matrix.rowVector[i+1]; curr = &(*curr)->next) {
+        for(Node** curr = matrix.rowVector[i]; curr != matrix.rowVector[i+1]; curr = &((*curr)->next)) {
             Node& node = **curr;
             (*this)(i,node.info.second) = node.info.first;
         }
@@ -184,7 +184,7 @@ Data& MatrixCSR<Data>::operator()(const ulong i, const ulong j) {
     Node** exit = rowVector[i+1];
     
     while (curr!=exit && (*curr)->info.second <= j) {
-        if(*curr!=nullptr && (*curr)->info.second == j)
+        if((*curr)->info.second == j)
             return (*curr)->info.first;  
 
         curr = &(*curr)->next;
@@ -194,7 +194,6 @@ Data& MatrixCSR<Data>::operator()(const ulong i, const ulong j) {
     *curr = new Node();
     (*curr)->info.second = j;
     (*curr)->next = tmp;
-    delete tmp;
     
     if(curr==exit) {
         ulong index = i+1;

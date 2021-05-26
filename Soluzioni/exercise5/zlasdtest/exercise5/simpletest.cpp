@@ -49,7 +49,7 @@ void stestMatrixInt(Mat<long>& mat, uint& testnum, uint& testerr) {
     SetCell<long>(loctestnum, loctesterr, mat, true, 1, 0, 2);
 
     SetCell<long>(loctestnum, loctesterr, mat, true, 2, 1, 3);
-
+    
     SetCell<long>(loctestnum, loctesterr, mat, true, 0, 3, 4);
     SetCell<long>(loctestnum, loctesterr, mat, true, 2, 3, 5);
 
@@ -200,7 +200,7 @@ void stestMatrixInt(uint& testnum, uint& testerr) {
   uint loctestnum = 0, loctesterr = 0;
   cout << endl << "Begin of Matrix<long> Test" << endl;
   try {
-    lasd::MatrixVec<long> matvec;
+    //lasd::MatrixVec<long> matvec;
     //cout << endl << "Begin of MatrixVec<long> Test:" << endl;
     //stestMatrixInt(matvec, loctestnum, loctesterr);
     lasd::MatrixCSR<long> matcsr;
