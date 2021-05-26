@@ -29,9 +29,9 @@ MatrixCSR<Data>::MatrixCSR(const ulong i, const ulong j) {
 
 // Copy constructor
 template <typename Data>
-MatrixCSR<Data>::MatrixCSR(const MatrixCSR<Data> &matrix) : MatrixCSR(matrix.rowSize, matrix.colSize) {
+MatrixCSR<Data>::MatrixCSR(const MatrixCSR<Data> &inMatrix) : MatrixCSR(inMatrix.rowSize, inMatrix.colSize) {
     for (ulong i = 0; i < rowSize; i++) {
-        for(Node** curr = matrix.rowVector[i]; curr != matrix.rowVector[i+1]; curr = &((*curr)->next)) {
+        for(Node** curr = inMatrix.rowVector[i]; curr != inMatrix.rowVector[i+1]; curr = &((*curr)->next)) {
             Node& node = **curr;
             (*this)(i,node.info.second) = node.info.first;
         }
@@ -40,26 +40,20 @@ MatrixCSR<Data>::MatrixCSR(const MatrixCSR<Data> &matrix) : MatrixCSR(matrix.row
 
 // Move constructor
 template <typename Data>
-MatrixCSR<Data>::MatrixCSR(MatrixCSR<Data> &&matrix) noexcept {
-    std::swap(rowSize,matrix.rowSize);
-    std::swap(colSize,matrix.colSize);
-    std::swap(size,matrix.size);
-    std::swap(rowVector,matrix.rowVector);
-    std::swap(head,matrix.head);
-
-    for (ulong index = 0; (index < size) && (rowVector[index]==&matrix.head); index++)
-        rowVector[index] = &head;
-
-    for (ulong index = 0; (index < matrix.size) && (matrix.rowVector[index]==&head); index++)
-        matrix.rowVector[index] = &matrix.head;
+MatrixCSR<Data>::MatrixCSR(MatrixCSR<Data> &&inMatrix) noexcept : MatrixCSR(0,0) {
+    std::swap(rowSize,inMatrix.rowSize);
+    std::swap(colSize,inMatrix.colSize);
+    std::swap(size,inMatrix.size);
+    std::swap(rowVector,inMatrix.rowVector);
+    std::swap(head,inMatrix.head);
 }
 
 /* ************************************************************************ */
 
 // Copy assignment
 template <typename Data>
-MatrixCSR<Data>& MatrixCSR<Data>::operator=(const MatrixCSR<Data> &matrix) {
-    MatrixCSR<Data>* tmpmat = new MatrixCSR<Data>(matrix);
+MatrixCSR<Data>& MatrixCSR<Data>::operator=(const MatrixCSR<Data> &inMatrix) {
+    MatrixCSR<Data>* tmpmat = new MatrixCSR<Data>(inMatrix);
 	std::swap(*tmpmat, *this);
 	delete tmpmat;
     return *this;
@@ -67,18 +61,18 @@ MatrixCSR<Data>& MatrixCSR<Data>::operator=(const MatrixCSR<Data> &matrix) {
 
 // Move assignment
 template <typename Data>
-MatrixCSR<Data>& MatrixCSR<Data>::operator=(MatrixCSR<Data> &&matrix) noexcept {
-    std::swap(rowSize,matrix.rowSize);
-    std::swap(colSize,matrix.colSize);
-    std::swap(size,matrix.size);
-    std::swap(rowVector,matrix.rowVector);
-    std::swap(head,matrix.head);
+MatrixCSR<Data>& MatrixCSR<Data>::operator=(MatrixCSR<Data> &&inMatrix) noexcept {
+    std::swap(rowSize,inMatrix.rowSize);
+    std::swap(colSize,inMatrix.colSize);
+    std::swap(size,inMatrix.size);
+    std::swap(rowVector,inMatrix.rowVector);
+    std::swap(head,inMatrix.head);
 
-    for (ulong index = 0; (index < size) && (rowVector[index]==&matrix.head); index++)
+    for (ulong index = 0; (index < size) && (rowVector[index]==&inMatrix.head); index++)
         rowVector[index] = &head;
 
-    for (ulong index = 0; (index < matrix.size) && (matrix.rowVector[index]==&head); index++)
-        matrix.rowVector[index] = &matrix.head;
+    for (ulong index = 0; (index < inMatrix.size) && (inMatrix.rowVector[index]==&head); index++)
+        inMatrix.rowVector[index] = &inMatrix.head;
 
     return *this;
 }
@@ -87,16 +81,16 @@ MatrixCSR<Data>& MatrixCSR<Data>::operator=(MatrixCSR<Data> &&matrix) noexcept {
 
 // Comparison operators
 template <typename Data>
-bool MatrixCSR<Data>::operator==(const MatrixCSR<Data> &matrix) const noexcept {
-    if((rowSize == matrix.rowSize) && (colSize == matrix.colSize))
-        return List<std::pair<Data,ulong>>::operator==(matrix);
+bool MatrixCSR<Data>::operator==(const MatrixCSR<Data> &inMatrix) const noexcept {
+    if((rowSize == inMatrix.rowSize) && (colSize == inMatrix.colSize))
+        return List<std::pair<Data,ulong>>::operator==(inMatrix);
     
     return false;
 }
 
 template <typename Data>
-bool MatrixCSR<Data>::operator!=(const MatrixCSR<Data> &matrix) const noexcept {
-    return !(*this == matrix);
+bool MatrixCSR<Data>::operator!=(const MatrixCSR<Data> &inMatrix) const noexcept {
+    return !(*this == inMatrix);
 }
 
 /* ************************************************************************ */
