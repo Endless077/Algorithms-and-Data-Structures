@@ -227,8 +227,8 @@ void stestBinaryTreeString(uint& testnum, uint& testerr) {
 
 void testSimpleExercise3() {
   uint testnum = 0, testerr = 0;
-  //stestBinaryTreeInt(testnum, testerr);
-  //stestBinaryTreeFloat(testnum, testerr);
-  //stestBinaryTreeString(testnum, testerr);
+  stestBinaryTreeInt(testnum, testerr);
+  stestBinaryTreeFloat(testnum, testerr);
+  stestBinaryTreeString(testnum, testerr);
   cout << endl << "Exercise 3 (Simple Test) (Errors/Tests: " << testerr << "/" << testnum << ")" << endl;
 }

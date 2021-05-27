@@ -316,8 +316,8 @@ void stestBSTString(uint& testnum, uint& testerr) {
 
 void testSimpleExercise4() {
   uint testnum = 0, testerr = 0;
-  //stestBSTInt(testnum, testerr);
-  //stestBSTFloat(testnum, testerr);
-  //stestBSTString(testnum, testerr);
+  stestBSTInt(testnum, testerr);
+  stestBSTFloat(testnum, testerr);
+  stestBSTString(testnum, testerr);
   cout << endl << "Exercise 4 (Simple Test) (Errors/Tests: " << testerr << "/" << testnum << ")" << endl;
 }
