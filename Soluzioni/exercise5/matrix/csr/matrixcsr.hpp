@@ -109,6 +109,12 @@ public:
   void FoldPreOrder(const FoldFunctor, const void*, void*) const override; // Override FoldableContainer member
   void FoldPostOrder(const FoldFunctor, const void*, void*) const override; // Override FoldableContainer member
 
+  /* ************************************************************************ */
+
+  protected:
+
+  ulong recursiveDelete(Node*, ulong);
+
 };
 
 /* ************************************************************************** */

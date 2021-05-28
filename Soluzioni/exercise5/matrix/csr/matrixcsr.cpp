@@ -46,10 +46,10 @@ MatrixCSR<Data>::MatrixCSR(MatrixCSR<Data> &&inMatrix) noexcept : MatrixCSR() {
     std::swap(head,inMatrix.head);
     std::swap(rowVector,inMatrix.rowVector);
 
-    rowVector[0] = &head;
-
-    for (ulong index = 0; (index < inMatrix.size) && (inMatrix.rowVector[index]==&head); index++)
-        inMatrix.rowVector[index] = &inMatrix.head;
+    for (ulong index = 0; (index < size) && (rowVector[index]==&inMatrix.head); index++)
+        rowVector[index] = &head;
+    
+    inMatrix.rowVector[0] = &inMatrix.head;
 }
 
 /* ************************************************************************ */
@@ -86,9 +86,24 @@ MatrixCSR<Data>& MatrixCSR<Data>::operator=(MatrixCSR<Data> &&inMatrix) noexcept
 // Comparison operators
 template <typename Data>
 bool MatrixCSR<Data>::operator==(const MatrixCSR<Data> &inMatrix) const noexcept {
-    if((rowSize == inMatrix.rowSize) && (colSize == inMatrix.colSize))
-        return List<std::pair<Data,ulong>>::operator==(inMatrix);
+    //if((rowSize == inMatrix.rowSize) && (colSize == inMatrix.colSize))
+    //    return List<std::pair<Data,ulong>>::operator==(inMatrix);
     
+    //return false;
+
+    if((rowSize == inMatrix.rowSize) && (colSize == inMatrix.colSize)) {
+        if(rowSize == 0 && colSize == 0)
+            return true;
+
+        ulong index = 0;
+        Node** ptrRow1 = rowVector[i];
+        Node** ptrRow2 = inMatrix.rowVector[i];
+        Node** ptrExit1 = rowVector[i+1];
+        Node** ptrExit2 = inMatrix.rowVector[i];
+
+        //Continuare i controlli
+    }
+
     return false;
 }
 
@@ -117,14 +132,7 @@ void MatrixCSR<Data>::RowResize(const ulong newRow) {
 
     }else if(newRow < rowSize) {
         Node* ptr = *rowVector[newRow];
-        while (ptr!=nullptr) {
-            Node* tmp = ptr->next;
-            delete ptr;
-            ptr=nullptr;
-            ptr = tmp;
-            size--;
-        }
-
+        size = recursiveDelete(ptr, size);
         *rowVector[newRow] = nullptr;
         
         ulong index = newRow+1;
@@ -161,12 +169,7 @@ void MatrixCSR<Data>::ColumnResize(const ulong newCol) {
                 Node* tmp = *ptr;
                 *ptr = *exit;
                 *exit = nullptr;
-                while(tmp != nullptr){
-                     Node* aux = tmp->next; 
-                     delete tmp; 
-                     tmp = aux;
-                     size --;
-                }
+                size = recursiveDelete(tmp, size);
             }
             while (index <= rowSize && rowVector[index] == exit) {
                 rowVector[index]=ptr;
@@ -292,6 +295,19 @@ void MatrixCSR<Data>::FoldPostOrder(const FoldFunctor fun, const void* param, vo
         [&fun](const std::pair<Data,ulong>& data, const void* parametro, void* accumulatore) { fun(data.first, parametro, accumulatore); }
         ,param
         ,acc);
+}
+
+template <typename Data>
+ulong MatrixCSR<Data>::recursiveDelete(Node* nodo, ulong aggSize) {
+    while(nodo != nullptr) {
+        Node* aux = nodo->next; 
+        delete nodo;
+        nodo = nullptr;
+        nodo = aux;
+        aggSize --;
+    }
+
+    return aggSize;
 }
 
 /* ************************************************************************** */

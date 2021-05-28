@@ -27,7 +27,7 @@ int main() {
 
         if(res == 1)
         {
-          //test();
+          test();
         }
         else if(res == 2)
         {
