@@ -34,7 +34,7 @@
                     lasd::BST<std::string> bst(lst);
                     bstMenu(bst);
                 }
-            exit = true;
+                exit = true;
             }while (!exit);
     }
 
@@ -57,69 +57,69 @@
                 std::cin >> choose;
                 
                 switch (choose) {
-                case 1:
-                    if(!bt.Empty()) {
-                        visualizzaBT(bt);
-                        std::cout << std::endl;
-                    }else
-                        std::cout << "L'albero è vuoto" << std::endl;
-                    break;
+                    case 1:
+                        if(!bt.Empty()) {
+                            visualizzaBT(bt);
+                            std::cout << std::endl;
+                        }else
+                            std::cout << "L'albero è vuoto." << std::endl;
+                        break;
 
-                case 2:
-                    ifExists(bt);
-                    break;
+                    case 2:
+                        ifExists(bt);
+                        break;
 
-                case 3:
-                    if (bt.Empty()) {
-                        std::cout << "L'albero è vuoto." << std::endl;
-                    } else {
-                        int n;
-                        std::cout << "Inserisci il valore di n per la funzione (dipende dal tipo di albero creato): ";
-                        std::cin >> n;
+                    case 3:
+                        if (bt.Empty()) {
+                            std::cout << "L'albero è vuoto." << std::endl;
+                        } else {
+                            int n;
+                            std::cout << "Inserisci il valore di n per la funzione (dipende dal tipo di albero creato): ";
+                            std::cin >> n;
 
-                        if(isInt(bt.Root().Element())){
-                            int result=1;
-                            bt.FoldPreOrder(&foldFunction<Data>, &n, &result);
-                            std::cout << "Risultato: " << result << std::endl;
+                            if(isInt(bt.Root().Element())){
+                                int result=1;
+                                bt.FoldPreOrder(&foldFunction<Data>, &n, &result);
+                                std::cout << "Risultato: " << result << std::endl;
 
-                        }else if(isFloat(bt.Root().Element())){
-                            float result=1;
-                            bt.FoldPreOrder(&foldFunction<Data>, &n, &result);
-                            std::cout << "Risultato: " << result << std::endl;
+                            }else if(isFloat(bt.Root().Element())){
+                                float result=1;
+                                bt.FoldPreOrder(&foldFunction<Data>, &n, &result);
+                                std::cout << "Risultato: " << result << std::endl;
 
-                        }else if(isString(bt.Root().Element())){
-                            std::string result="";
-                            bt.FoldPreOrder(&foldFunction<Data>, &n, &result);
-                            std::cout << "Risultato: " << result << std::endl;
+                            }else if(isString(bt.Root().Element())){
+                                std::string result="";
+                                bt.FoldPreOrder(&foldFunction<Data>, &n, &result);
+                                std::cout << "Risultato: " << result << std::endl;
+                            }
                         }
-                    }
+                        break;
+                    
+                    case 4:
+                        insertIn(bt);
+                        break;
+                    
+                    case 5:
+                        removeOut(bt);
                     break;
-                
-                case 4:
-                    insertIn(bt);
-                    break;
-                
-                case 5:
-                    removeOut(bt);
-                   break;
-                
-                case 6:
-                    if (bt.Empty()) {
-                        std::cout << "L'albero è vuoto." << std::endl;
-                    } else {
-                        menuMaxMin(bt);
-                    }
-                    break;
-                
-                case 7:
-                    if (bt.Empty()) {
-                        std::cout << "L'albero è vuoto." << std::endl;
-                    } else {
-                        menuPreSuc(bt);
-                    }
-                    break; 
+                    
+                    case 6:
+                        if (bt.Empty()) {
+                            std::cout << "L'albero è vuoto." << std::endl;
+                        } else {
+                            menuMaxMin(bt);
+                        }
+                        break;
+                    
+                    case 7:
+                        if (bt.Empty()) {
+                            std::cout << "L'albero è vuoto." << std::endl;
+                        } else {
+                            menuPreSuc(bt);
+                        }
+                        break; 
 
-            }
+                }
 
         } while (choose != 0);
     }
@@ -184,7 +184,7 @@
 
     //Visualizza l'albero corrente (MAP)
     template<typename Data>
-    void visualizzaBT(lasd::BST<Data> &bt){
+    void visualizzaBT(lasd::BST<Data> &bt) {
         int result = -1;
         while (result < 0 || result > 4) {
             std::cout << "Inserisci il tipo di visita: ";
@@ -212,24 +212,24 @@
 
     //Applica funzione all'albero (FOLD)
     template<typename Data>
-    void foldFunction(const Data &, const void *n, void *result) noexcept{
+    void foldFunction(const Data &, const void *n, void *result) noexcept {
         int value = *((int *) n);
     }
 
     template<>
-    void foldFunction(const int &data, const void *n, void *result) noexcept{
+    void foldFunction(const int &data, const void *n, void *result) noexcept {
         if (data < *((int *) n))
             *((int *) result) *= data;
     }
 
     template<>
-    void foldFunction(const float &data, const void *n, void *result) noexcept{
+    void foldFunction(const float &data, const void *n, void *result) noexcept {
         if (data > *((int *) n))
             *((float *) result) += data;
     }
 
     template<>
-    void foldFunction(const std::string &data, const void *n, void *result) noexcept{
+    void foldFunction(const std::string &data, const void *n, void *result) noexcept {
         if (data.length() <= *((int *) n))
             ((std::string *) result)->append(data);
     }
@@ -456,7 +456,7 @@
     }
 
     template<typename Data>
-    void stampavalore(Data &dato, void*){
+    void stampavalore(Data &dato, void*) {
         std::cout<< dato << " ";
     }
 

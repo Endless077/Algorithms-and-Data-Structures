@@ -63,7 +63,7 @@
 
     //Vector menù
     template<typename Data>
-    void vectorMenu(lasd::Vector<Data> &container){
+    void vectorMenu(lasd::Vector<Data> &container) {
         int choose = 0;
         do {
             std::cout << "---------------Menù Vector---------------" << std::endl;
@@ -154,7 +154,7 @@
 
     //List menù
     template<typename Data>
-    void listMenu(lasd::List<Data> &container){
+    void listMenu(lasd::List<Data> &container) {
         int choose = -1;
             do {
                 std::cout << "----------------Menù List----------------" << std::endl;
@@ -323,7 +323,7 @@
     }
 
     template<>
-    void populationRandomVector(lasd::Vector<float> &data){
+    void populationRandomVector(lasd::Vector<float> &data) {
         
         std::cout << "---Inizio popolazione random FLOAT---" << std::endl;
         std::default_random_engine generator(std::random_device{}());
@@ -337,7 +337,7 @@
     }
 
     template<>
-    void populationRandomVector(lasd::Vector<std::string> &data){
+    void populationRandomVector(lasd::Vector<std::string> &data) {
 
         std::cout << "---Inizio popolazione random STRING---" << std::endl;
         std::default_random_engine generator(std::random_device{}());
@@ -454,26 +454,26 @@
 
     //Parte 6: utilizzo di fold
     template<typename Data>
-    void foldFunction(const Data &, const void *n, void *result) noexcept{
+    void foldFunction(const Data &, const void *n, void *result) noexcept {
         int value = *((int *) n);
     }
 
     template<>
-    void foldFunction(const int &data, const void *n, void *result) noexcept{
+    void foldFunction(const int &data, const void *n, void *result) noexcept {
         //int value = *((int *) n);
         if (data < *((int *) n))
             *((int *) result) += data;
     }
 
     template<>
-    void foldFunction(const float &data, const void *n, void *result) noexcept{
+    void foldFunction(const float &data, const void *n, void *result) noexcept {
         //int value = *((int *) n);
         if (data > *((int *) n))
             *((float *) result) *= data;
     }
 
     template<>
-    void foldFunction(const std::string &data, const void *n, void *result) noexcept{
+    void foldFunction(const std::string &data, const void *n, void *result) noexcept {
         //int value = *((int *) n);
         if (data.length() <= *((int *) n))
             ((std::string *) result)->append(data);
@@ -481,20 +481,20 @@
 
     //Parte 7: function application
     template<typename Data>
-    void applicationFunction(Data &dato, void*){}
+    void applicationFunction(Data &dato, void*) {}
 
     template<>
-    void applicationFunction(int &dato, void*){
+    void applicationFunction(int &dato, void*) {
         dato = dato * 2;
     }
 
     template<>
-    void applicationFunction(float &dato, void*){
+    void applicationFunction(float &dato, void*) {
         dato = dato * dato;
     }
 
     template<>
-    void applicationFunction(std::string &dato, void*){
+    void applicationFunction(std::string &dato, void*) {
         auto &str = dato;
         std::transform(str.begin(), str.end(), str.begin(), ::toupper);
         dato = str;
@@ -516,7 +516,7 @@
     }
 
     template<typename Data>
-    void stampavalore(Data &dato, void*){
+    void stampavalore(Data &dato, void*) {
         std::cout<< dato << " ";
     }
 

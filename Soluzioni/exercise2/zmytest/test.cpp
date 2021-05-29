@@ -281,7 +281,7 @@ void queueMenu(lasd::Queue<Data> &que) {
 
     //Insert STACK
     template<typename Data>
-    void pushIn(lasd::Stack<Data> &stk){
+    void pushIn(lasd::Stack<Data> &stk) {
         Data value;
         bool resta = false;
         do {
@@ -301,7 +301,7 @@ void queueMenu(lasd::Queue<Data> &que) {
 
     //Insert QUEUE
     template<typename Data>
-    void enqueueIn(lasd::Queue<Data> &que){
+    void enqueueIn(lasd::Queue<Data> &que) {
         Data value;
         bool resta = false;
         do {
@@ -324,7 +324,7 @@ void queueMenu(lasd::Queue<Data> &que) {
 
     //Remove STACK
     template<typename Data>
-    void popOut(lasd::Stack<Data> &stk){
+    void popOut(lasd::Stack<Data> &stk) {
         std::cout << "In corso: Pop "<<std::endl;
 
         stk.Pop();
@@ -334,7 +334,7 @@ void queueMenu(lasd::Queue<Data> &que) {
 
     //Remove QUEUE
     template<typename Data>
-    void dequeueOut(lasd::Queue<Data> &que){
+    void dequeueOut(lasd::Queue<Data> &que) {
         std::cout << "In corso: Dequeue "<<std::endl;
 
         que.Dequeue();
@@ -356,7 +356,7 @@ void queueMenu(lasd::Queue<Data> &que) {
 
     //Access QUEUE
     template<typename Data>
-    void frontView(lasd::Queue<Data> &que){
+    void frontView(lasd::Queue<Data> &que) {
         std::cout << "In corso: Head "<<std::endl;
 
         std::cout << que.Head() << std::endl;
@@ -369,7 +369,7 @@ void queueMenu(lasd::Queue<Data> &que) {
 
     //Access and Remove STACK
     template<typename Data>
-    void topRemove(lasd::Stack<Data> &stk){
+    void topRemove(lasd::Stack<Data> &stk) {
         std::cout << "In corso: Top and Pop "<<std::endl;
 
         std::cout << stk.TopNPop() << std::endl;
@@ -379,7 +379,7 @@ void queueMenu(lasd::Queue<Data> &que) {
 
     //Access and Remove QUEUE
     template<typename Data>
-    void frontRemove(lasd::Queue<Data> &que){
+    void frontRemove(lasd::Queue<Data> &que) {
         std::cout << "In corso: Top and POP "<<std::endl;
 
         std::cout << que.HeadNDequeue() << std::endl;

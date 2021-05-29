@@ -94,151 +94,151 @@
                 std::cin >> choose;
                 
                 switch (choose) {
-                case 1:
-                    if(!bt.Empty()) {
-                        visualizzaBT(bt);
-                        std::cout << std::endl;
-                    }else
-                        std::cout << "L'albero è vuoto" << std::endl;
-                    break;
-
-                case 2:
-                    ifExists(bt);
-                    break;
-
-                case 3:
-                    if (bt.Empty()) {
-                        std::cout << "L'albero è vuoto." << std::endl;
-                    } else {
-                        int n;
-                        std::cout << "Inserisci il valore di n per la funzione (dipende dal tipo di albero creato): ";
-                        std::cin >> n;
-
-                        if(isInt(bt.Root().Element())){
-                            int result=1;
-                            bt.FoldPreOrder(&foldFunction<Data>, &n, &result);
-                            std::cout << "Risultato: " << result << std::endl;
-
-                        }else if(isFloat(bt.Root().Element())){
-                            float result=1;
-                            bt.FoldPreOrder(&foldFunction<Data>, &n, &result);
-                            std::cout << "Risultato: " << result << std::endl;
-
-                        }else if(isString(bt.Root().Element())){
-                            std::string result="";
-                            bt.FoldPreOrder(&foldFunction<Data>, &n, &result);
-                            std::cout << "Risultato: " << result << std::endl;
-                        }
-                    }
-                    break;
-                
-                case 4:
-                    if (bt.Empty()) {
-                        std::cout << "L'albero è vuoto." << std::endl;
-                    } else {
-                        std::cout << "---Verranno applicate modifiche a tutti gli elementi (dipende dal tipo di albero)---" << std::endl;
-                        if(isString(bt.Root().Element())){
-                            std::cout << "Inserisci la stringa da concatenare: ";
-                            std::string input;
-                            std::cin >> input;
-                            bt.MapPreOrder(&applicationFunction<Data>, &input);
-                        }else{
-                            bt.MapPreOrder(&applicationFunction<Data>, nullptr);
-                        }
-                        std::cout << "---Modifiche apportate (visualizzare la struttura per vederle)---" << std::endl;
-                    }
-                    break;
-                
-                case 5:
-                    if (bt.Empty()) {
-                        std::cout << "L'albero è vuoto." << std::endl;
-                    } else {
-                        std::cout << "L'elemento corrente è: " << tmp->Element() << std::endl;
-                    }
-                   break;
-                
-                case 6:
-                    if (bt.Empty()) {
-                        std::cout << "L'albero è vuoto." << std::endl;
-                    } else {
-                        Data change;
-                        std::cout << "L'elemento corrente è: " << bt.Root().Element() << std::endl;
-                        std::cout << "Come vorresti modificarlo?" << std::endl;
-                        std::cin >> change;
-                        tmp->Element() = change;
-                    }
-                    break;
-                
-                case 7:
-                    if (bt.Empty()) {
-                        std::cout << "L'albero è vuoto." << std::endl;
-                    } else {
-                        if(tmp->HasLeftChild()){
-                            std::cout << "Spostamento sul sinistro." << std::endl;
-                            tmp = &tmp->LeftChild();
+                    case 1:
+                        if(!bt.Empty()) {
+                            visualizzaBT(bt);
+                            std::cout << std::endl;
                         }else
-                            std::cout << "Non ha il sinistro." << std::endl;
-                    }
-                    break; 
-                
-                case 8:
-                    if (bt.Empty()) {
-                        std::cout << "L'albero è vuoto." << std::endl;
-                    } else {
-                        if(tmp->HasRightChild()){
-                            std::cout << "Spostamento sul destro." << std::endl;
-                            tmp = &tmp->RightChild();
-                        }else
-                            std::cout << "Non ha il destro." << std::endl;
-                    }
-                    break; 
+                            std::cout << "L'albero è vuoto." << std::endl;
+                        break;
 
-                case 9:
-                    if (bt.Empty())
-                        std::cout << "L'albero è vuoto." << std::endl;
-                    else {
-                        int result = -1;
-                        while (result < 0 || result > 3) {
-                            std::cout << "Inserisci l'iterator che vuoi eseguire: " << std::endl;
-                            std::cout << "0) PreOrder;" << std::endl;
-                            std::cout << "1) InOrder;" << std::endl;
-                            std::cout << "2) PostOder;" << std::endl;
-                            std::cout << "3) Ampiezza;" << std::endl;
-                            std::cin >> result;
+                    case 2:
+                        ifExists(bt);
+                        break;
+
+                    case 3:
+                        if (bt.Empty()) {
+                            std::cout << "L'albero è vuoto." << std::endl;
+                        } else {
+                            int n;
+                            std::cout << "Inserisci il valore di n per la funzione (dipende dal tipo di albero creato): ";
+                            std::cin >> n;
+
+                            if(isInt(bt.Root().Element())){
+                                int result=1;
+                                bt.FoldPreOrder(&foldFunction<Data>, &n, &result);
+                                std::cout << "Risultato: " << result << std::endl;
+
+                            }else if(isFloat(bt.Root().Element())){
+                                float result=1;
+                                bt.FoldPreOrder(&foldFunction<Data>, &n, &result);
+                                std::cout << "Risultato: " << result << std::endl;
+
+                            }else if(isString(bt.Root().Element())){
+                                std::string result="";
+                                bt.FoldPreOrder(&foldFunction<Data>, &n, &result);
+                                std::cout << "Risultato: " << result << std::endl;
+                            }
                         }
-
-                        if(result==0){
-                            lasd::BTPreOrderIterator<Data> iter(bt);
-                            usaIterator(iter);
-                        }else if(result==1){
-                            lasd::BTInOrderIterator<Data> iter(bt);
-                            usaIterator(iter);
-                        }else if(result==2){
-                            lasd::BTPostOrderIterator<Data> iter(bt);
-                            usaIterator(iter);
-                        }else if(result==3){
-                            lasd::BTBreadthIterator<Data> iter(bt);
-                            usaIterator(iter);
+                        break;
+                    
+                    case 4:
+                        if (bt.Empty()) {
+                            std::cout << "L'albero è vuoto." << std::endl;
+                        } else {
+                            std::cout << "---Verranno applicate modifiche a tutti gli elementi (dipende dal tipo di albero)---" << std::endl;
+                            if(isString(bt.Root().Element())){
+                                std::cout << "Inserisci la stringa da concatenare: ";
+                                std::string input;
+                                std::cin >> input;
+                                bt.MapPreOrder(&applicationFunction<Data>, &input);
+                            }else{
+                                bt.MapPreOrder(&applicationFunction<Data>, nullptr);
+                            }
+                            std::cout << "---Modifiche apportate (visualizzare la struttura per vederle)---" << std::endl;
                         }
-                    }
+                        break;
+                    
+                    case 5:
+                        if (bt.Empty()) {
+                            std::cout << "L'albero è vuoto." << std::endl;
+                        } else {
+                            std::cout << "L'elemento corrente è: " << tmp->Element() << std::endl;
+                        }
                     break;
+                    
+                    case 6:
+                        if (bt.Empty()) {
+                            std::cout << "L'albero è vuoto." << std::endl;
+                        } else {
+                            Data change;
+                            std::cout << "L'elemento corrente è: " << bt.Root().Element() << std::endl;
+                            std::cout << "Come vorresti modificarlo?" << std::endl;
+                            std::cin >> change;
+                            tmp->Element() = change;
+                        }
+                        break;
+                    
+                    case 7:
+                        if (bt.Empty()) {
+                            std::cout << "L'albero è vuoto." << std::endl;
+                        } else {
+                            if(tmp->HasLeftChild()){
+                                std::cout << "Spostamento sul sinistro." << std::endl;
+                                tmp = &tmp->LeftChild();
+                            }else
+                                std::cout << "Non ha il sinistro." << std::endl;
+                        }
+                        break; 
+                    
+                    case 8:
+                        if (bt.Empty()) {
+                            std::cout << "L'albero è vuoto." << std::endl;
+                        } else {
+                            if(tmp->HasRightChild()){
+                                std::cout << "Spostamento sul destro." << std::endl;
+                                tmp = &tmp->RightChild();
+                            }else
+                                std::cout << "Non ha il destro." << std::endl;
+                        }
+                        break; 
 
-                case 10:
-                    std::cout << "---Clear dell'albero iniziata---" << std::endl;
-                    bt.Clear();
-                    tmp = nullptr;
-                    std::cout << "---Clear dell'albero terminata---" << std::endl;
-                    break;
+                    case 9:
+                        if (bt.Empty())
+                            std::cout << "L'albero è vuoto." << std::endl;
+                        else {
+                            int result = -1;
+                            while (result < 0 || result > 3) {
+                                std::cout << "Inserisci l'iterator che vuoi eseguire: " << std::endl;
+                                std::cout << "0) PreOrder;" << std::endl;
+                                std::cout << "1) InOrder;" << std::endl;
+                                std::cout << "2) PostOder;" << std::endl;
+                                std::cout << "3) Ampiezza;" << std::endl;
+                                std::cin >> result;
+                            }
 
-                case 11:
-                    if (bt.Empty())
-                        std::cout << "L'albero è vuoto." << std::endl;
-                    else {
-                        std::cout << "---Reset---" << std::endl;
-                        tmp = &bt.Root();
-                    }
-                    break; 
-            }
+                            if(result==0){
+                                lasd::BTPreOrderIterator<Data> iter(bt);
+                                usaIterator(iter);
+                            }else if(result==1){
+                                lasd::BTInOrderIterator<Data> iter(bt);
+                                usaIterator(iter);
+                            }else if(result==2){
+                                lasd::BTPostOrderIterator<Data> iter(bt);
+                                usaIterator(iter);
+                            }else if(result==3){
+                                lasd::BTBreadthIterator<Data> iter(bt);
+                                usaIterator(iter);
+                            }
+                        }
+                        break;
+
+                    case 10:
+                        std::cout << "---Clear dell'albero iniziata---" << std::endl;
+                        bt.Clear();
+                        tmp = nullptr;
+                        std::cout << "---Clear dell'albero terminata---" << std::endl;
+                        break;
+
+                    case 11:
+                        if (bt.Empty())
+                            std::cout << "L'albero è vuoto." << std::endl;
+                        else {
+                            std::cout << "---Reset---" << std::endl;
+                            tmp = &bt.Root();
+                        }
+                        break; 
+                }
 
         } while (choose != 0);
     }
@@ -312,7 +312,7 @@
 
     //Visite
     template<typename Data>
-    void visualizzaBT(lasd::BinaryTree<Data> &bt){
+    void visualizzaBT(lasd::BinaryTree<Data> &bt) {
         int result = -1;
         while (result < 0 || result > 4) {
             std::cout << "Inserisci il tipo di visita: ";
@@ -375,44 +375,44 @@
 
     //Parte 5: utilizzo di fold
     template<typename Data>
-    void foldFunction(const Data &, const void *n, void *result) noexcept{
+    void foldFunction(const Data &, const void *n, void *result) noexcept {
         int value = *((int *) n);
     }
 
     template<>
-    void foldFunction(const int &data, const void *n, void *result) noexcept{
+    void foldFunction(const int &data, const void *n, void *result) noexcept {
         if (data < *((int *) n))
             *((int *) result) *= data;
     }
 
     template<>
-    void foldFunction(const float &data, const void *n, void *result) noexcept{
+    void foldFunction(const float &data, const void *n, void *result) noexcept {
         if (data > *((int *) n))
             *((float *) result) += data;
     }
 
     template<>
-    void foldFunction(const std::string &data, const void *n, void *result) noexcept{
+    void foldFunction(const std::string &data, const void *n, void *result) noexcept {
         if (data.length() <= *((int *) n))
             ((std::string *) result)->append(data);
     }
 
     //Parte 6: function application
     template<typename Data>
-    void applicationFunction(Data &dato, void*){}
+    void applicationFunction(Data &dato, void*) {}
 
     template<>
-    void applicationFunction(int &dato, void*){
+    void applicationFunction(int &dato, void*) {
         dato = dato * 3;
     }
 
     template<>
-    void applicationFunction(float &dato, void*){
+    void applicationFunction(float &dato, void*) {
         dato = pow(dato,3);
     }
 
     template<>
-    void applicationFunction(std::string &dato, void* str){
+    void applicationFunction(std::string &dato, void* str) {
         dato = *((std::string *) str) + dato;
     }
 
@@ -432,7 +432,7 @@
     }
 
     template<typename Data>
-    void stampavalore(Data &dato, void*){
+    void stampavalore(Data &dato, void*) {
         std::cout<< dato << " ";
     }
 

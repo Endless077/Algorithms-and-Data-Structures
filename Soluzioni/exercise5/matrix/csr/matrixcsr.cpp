@@ -95,15 +95,37 @@ bool MatrixCSR<Data>::operator==(const MatrixCSR<Data> &inMatrix) const noexcept
         if(rowSize == 0 && colSize == 0)
             return true;
 
-        ulong index = 0;
-        Node** ptrRow1 = rowVector[i];
-        Node** ptrRow2 = inMatrix.rowVector[i];
-        Node** ptrExit1 = rowVector[i+1];
-        Node** ptrExit2 = inMatrix.rowVector[i];
+        Node** ptrRow1;
+        Node** ptrRow2;
+        Node** ptrExit1;
+        Node** ptrExit2;
 
-        //Continuare i controlli
+        Node* nodo1;
+        Node* nodo2;
+        
+        for(int index = 0; index < rowSize; index++) {
+            ptrRow1 = rowVector[index];
+            ptrRow2 = inMatrix.rowVector[index];
+            ptrExit1 = rowVector[index+1];
+            ptrExit2 = inMatrix.rowVector[index+1];
+
+            while (ptrRow1 != ptrExit1 || ptrRow2 != ptrExit2) {
+                nodo1 = *ptrRow1;
+                nodo2 = *ptrRow2;
+
+                if ((nodo1->info.first != nodo2->info.first) && (nodo1->info.second != nodo2->info.second))
+                    return false;
+                
+                ptrRow1 = &(*ptrRow1)->next;
+                ptrRow2 = &(*ptrRow2)->next;
+            }
+
+            if((ptrRow1 == ptrExit1 && ptrRow2 != ptrExit2) || (ptrRow1 != ptrExit1 && ptrExit2 == ptrExit2))
+                return false;
+        }
+        
+        return true;
     }
-
     return false;
 }
 

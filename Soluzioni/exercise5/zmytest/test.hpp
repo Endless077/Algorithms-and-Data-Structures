@@ -34,11 +34,26 @@ int selectSize(ulong);
 template<typename Data>
 void populateRandomLinearContainer(lasd::List<Data> &lst, int initialSize);
 
+template<typename Data>
+void populateRandomMatrix(lasd::Matrix<Data> &mat, lasd::List<Data> &lst);
+
 /* ************************************************************************** */
+
+//Visualizzazione
+template<typename Data>
+void visualizzaMatrix(lasd::Matrix<Data> &mat);
+
+//GetCell
+template<typename Data>
+void getCell(lasd::Matrix<Data> &mat);
+
+//IfExist Cell
+template<typename Data>
+void ifExistsCell(const lasd::Matrix<Data> &mat);
 
 //IfExist
 template<typename Data>
-void ifExists(const lasd::TestableContainer<Data> &bt);
+void ifExists(const lasd::TestableContainer<Data> &mat);
 
 /* ************************************************************************** */
 
