@@ -150,14 +150,18 @@
                         break;
                     
                     case 5:
-                        ifExistsCell(mat);
+                        getCell(mat);
                         break;
 
                     case 6:
-                        getCell(mat);
+                        setCell(mat);
                         break;
                     
                     case 7:
+                        ifExistsCell(mat);
+                        break;
+
+                    case 8:
                         ulong rowResize;
                         std::cout << "Scegli di quanto vuoi fare la resize delle righe, attualmente: "+std::to_string(mat.RowNumber()) << std::endl;
                         std::cin >> rowResize;
@@ -167,7 +171,7 @@
                             std::cout << "Scegliere un numero intero positivo (0 compreso)." << std::endl;
                         break; 
                     
-                    case 8:
+                    case 9:
                         ulong colResize;
                         std::cout << "Scegli di quanto vuoi fare la resize delle colonne, attualmente: "+std::to_string(mat.ColumnNumber()) << std::endl;
                         std::cin >> colResize;
@@ -284,10 +288,10 @@
         int row;
         int col;
         std::cout << "Inserisci le coordinate della cella da leggere:" << std::endl;
-        std::cout << "Righe:";
+        std::cout << "Riga:";
         std::cin >> row;
         std::cout << std::endl;
-        std::cout << "Colonne:";
+        std::cout << "Colonna:";
         std::cin >> col;
         if(mat.ExistsCell(row,col)) {
             std::cout << "L'elemento a riga "+std::to_string(row)+" e colonna "+std::to_string(col)+" è: " << std::endl;
@@ -296,16 +300,45 @@
             std::cout << "La cella non esiste." << std::endl;
     }
 
+    //SetCell
+    template<typename Data>
+    void setCell(lasd::Matrix<Data> &mat) {
+        int row;
+        int col;
+        Data d;
+
+        std::cout << "Inserisci le coordinate della cella da leggere:" << std::endl;
+        std::cout << "Riga:";
+        std::cin >> row;
+        std::cout << std::endl;
+        std::cout << "Colonna:";
+        std::cin >> col;
+        std::cout << "Inserisci il valore dell'elemento da scrivere/inserire nella cella: ";
+        std::cin >> d;
+
+
+        if(mat.ExistsCell(row,col)) {
+            std::cout << "L'elemento a riga "+std::to_string(row)+" e colonna "+std::to_string(col)+" è: " << std::endl;
+            std::cout << mat(row,col) << std::endl;
+            mat(row,col) = d;
+            std::cout << "Cella modificata." << std::endl;
+        }else{
+            std::cout << "La cella non esiste." << std::endl;
+            mat(row,col) = d;
+            std::cout << "Cella inserita." << std::endl;
+        }
+    }
+
     //IfExist Cell
     template<typename Data>
     void ifExistsCell(const lasd::Matrix<Data> &mat) {
         int row;
         int col;
         std::cout << "Inserisci le coordinate della cella da controllare:" << std::endl;
-        std::cout << "Righe:";
+        std::cout << "Riga:";
         std::cin >> row;
         std::cout << std::endl;
-        std::cout << "Colonne:";
+        std::cout << "Colonna:";
         std::cin >> col;
         if(mat.ExistsCell(row,col))
             std::cout << "La cella a riga "+std::to_string(row)+" e colonna "+std::to_string(col)+" esiste." << std::endl;
@@ -322,7 +355,7 @@
             std::cout << "Inserisci il valore che vuoi controllare: ";
             std::cin >> value;
 
-            std::string text = bt.Exists(value) ? ("L'elemento è nel albero.") : ("L'elemento non è nel albero.");
+            std::string text = bt.Exists(value) ? ("L'elemento è nella matrice.") : ("L'elemento non è nella matrice.");
 
             std::cout << text << std::endl;
 
@@ -345,7 +378,7 @@
 
     template<>
     void foldFunction(const int &data, const void *n, void *result) noexcept{
-        if (data < *((int *) n))
+        if (data < *((int *) n) && data != 0)
             *((int *) result) *= data;
     }
 

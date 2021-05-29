@@ -47,6 +47,10 @@ void visualizzaMatrix(lasd::Matrix<Data> &mat);
 template<typename Data>
 void getCell(lasd::Matrix<Data> &mat);
 
+//SetCell
+template<typename Data>
+void setCell(lasd::Matrix<Data> &mat);
+
 //IfExist Cell
 template<typename Data>
 void ifExistsCell(const lasd::Matrix<Data> &mat);
