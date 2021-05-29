@@ -19,9 +19,8 @@ MatrixCSR<Data>::MatrixCSR(const ulong i, const ulong j) {
     colSize = j;
     rowVector.Resize(i+1);
 
-    for (ulong index = 0; index <= rowSize; index++) {
+    for (ulong index = 0; index <= rowSize; index++)
         rowVector[index] = &head;
-    }
 }
 
 /* ************************************************************************ */
@@ -154,16 +153,10 @@ void MatrixCSR<Data>::RowResize(const ulong newRow) {
 
     }else if(newRow < rowSize) {
         Node* ptr = *rowVector[newRow];
-        size = recursiveDelete(ptr, size);
+        size = subListDelete(ptr, size);
+        
         *rowVector[newRow] = nullptr;
-        
-        ulong index = newRow+1;
-        while (index < rowSize && rowVector[index] == rowVector[index+1]) {   
-            rowVector[index] = rowVector[newRow+1];
-            index++;
-        }
-        rowVector[index] = rowVector[newRow];
-        
+    
         rowVector.Resize(newRow+1);
     }
     rowSize = newRow;
@@ -191,7 +184,7 @@ void MatrixCSR<Data>::ColumnResize(const ulong newCol) {
                 Node* tmp = *ptr;
                 *ptr = *exit;
                 *exit = nullptr;
-                size = recursiveDelete(tmp, size);
+                size = subListDelete(tmp, size);
             }
             while (index <= rowSize && rowVector[index] == exit) {
                 rowVector[index]=ptr;
@@ -319,8 +312,10 @@ void MatrixCSR<Data>::FoldPostOrder(const FoldFunctor fun, const void* param, vo
         ,acc);
 }
 
+/* ************************************************************************** */
+
 template <typename Data>
-ulong MatrixCSR<Data>::recursiveDelete(Node* nodo, ulong aggSize) {
+ulong MatrixCSR<Data>::subListDelete(Node* nodo, ulong aggSize) {
     while(nodo != nullptr) {
         Node* aux = nodo->next; 
         delete nodo;

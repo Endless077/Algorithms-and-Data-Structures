@@ -113,7 +113,7 @@ public:
 
   protected:
 
-  ulong recursiveDelete(Node*, ulong);
+  ulong subListDelete(Node*, ulong);
 
 };
 
