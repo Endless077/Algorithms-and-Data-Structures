@@ -24,7 +24,7 @@ int main() {
         std::cin >> res;
 
         if(res == 1)
-           test();
+          test();
 
         else if(res == 2)
           lasdtest();

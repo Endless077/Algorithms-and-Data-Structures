@@ -191,7 +191,7 @@ void MatrixCSR<Data>::ColumnResize(const ulong newCol) {
                 index++;
             }
         }
-      }
+    }
     colSize = newCol;
 }
 
