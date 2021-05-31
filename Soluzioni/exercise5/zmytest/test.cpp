@@ -89,6 +89,7 @@
                 std::cout << "7) Controllo di una cella." << std::endl;
                 std::cout << "8) Resize Riga." << std::endl;
                 std::cout << "9) Resize Colonna." << std::endl;
+                std::cout << "10) Clear" << std::endl;
                 std::cout << "0)Indietro." << std::endl;
                 std::cout << "------------Scelga un'opzione------------" << std::endl;
                 std::cin >> choose;
@@ -179,6 +180,12 @@
                             mat.ColumnResize(colResize);
                         else
                             std::cout << "Scegliere un numero intero positivo (0 compreso)." << std::endl;
+                        break;
+                    
+                    case 10:
+                        std::cout << "---Clear iniziata---" << std::endl;
+                        mat.Clear();
+                        std::cout << "---Clear terminata---" << std::endl;
                         break;
 
                 }
