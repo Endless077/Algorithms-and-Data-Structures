@@ -316,8 +316,9 @@ void MatrixCSR<Data>::FoldPostOrder(const FoldFunctor fun, const void* param, vo
 
 template <typename Data>
 ulong MatrixCSR<Data>::subListDelete(Node* nodo, ulong aggSize) {
+    Node* aux;
     while(nodo != nullptr) {
-        Node* aux = nodo->next; 
+        aux = nodo->next; 
         delete nodo;
         nodo = nullptr;
         nodo = aux;
