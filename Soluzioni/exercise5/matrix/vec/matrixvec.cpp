@@ -129,10 +129,7 @@ void MatrixVec<Data>::ColumnResize(const ulong newCol) {
 
 template <typename Data>
 bool MatrixVec<Data>::ExistsCell(const ulong i, const ulong j) const noexcept {
-    if(i >= rowSize && j >= colSize)
-        return false;
-    
-    return true;
+    return (i < rowSize) && (j < colSize);
 }
 
 template <typename Data>
@@ -142,8 +139,10 @@ Data& MatrixVec<Data>::operator()(const ulong i, const ulong j) {
 
 template <typename Data>
 const Data& MatrixVec<Data>::operator()(const ulong i, const ulong j) const {
-    //Exception std::out_of_range throw by Vector.
-    return Vector<Data>::operator[](i*colSize+j);
+    if(!ExistsCell(i,j))
+        throw std::out_of_range("Access index for the Matrix is out of range.");
+    
+    return Vector<Data>::operator[]((i*colSize)+j);
 }
 
 /* ************************************************************************ */
