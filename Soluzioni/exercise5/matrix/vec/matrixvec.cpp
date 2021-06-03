@@ -19,16 +19,16 @@ MatrixVec<Data>::MatrixVec(const ulong i, const ulong j) : Vector<Data>(i*j) {
 
 // Copy constructor
 template <typename Data>
-MatrixVec<Data>::MatrixVec(const MatrixVec<Data> &matrix) : Vector<Data>(matrix) {
-    rowSize = matrix.rowSize;
-    colSize = matrix.colSize;
+MatrixVec<Data>::MatrixVec(const MatrixVec<Data> &inMatrix) : Vector<Data>(inMatrix) {
+    rowSize = inMatrix.rowSize;
+    colSize = inMatrix.colSize;
 }
 
 // Move constructor
 template <typename Data>
-MatrixVec<Data>::MatrixVec(MatrixVec<Data> &&matrix) noexcept : Vector<Data>(std::move(matrix)){
-    std::swap(rowSize,matrix.rowSize);
-    std::swap(colSize,matrix.colSize);    
+MatrixVec<Data>::MatrixVec(MatrixVec<Data> &&inMatrix) noexcept : Vector<Data>(std::move(inMatrix)) {
+    std::swap(rowSize,inMatrix.rowSize);
+    std::swap(colSize,inMatrix.colSize);    
 }
 
 /* ************************************************************************ */
@@ -43,8 +43,8 @@ MatrixVec<Data>::~MatrixVec() {
 
 // Copy assignment
 template <typename Data>
-MatrixVec<Data>& MatrixVec<Data>::operator=(const MatrixVec<Data> &matrix) {
-    MatrixVec<Data>* tmpmat = new MatrixVec<Data>(matrix);
+MatrixVec<Data>& MatrixVec<Data>::operator=(const MatrixVec<Data> &inMatrix) {
+    MatrixVec<Data>* tmpmat = new MatrixVec<Data>(inMatrix);
 	std::swap(*tmpmat, *this);
 	delete tmpmat;
 	return *this;
@@ -52,10 +52,10 @@ MatrixVec<Data>& MatrixVec<Data>::operator=(const MatrixVec<Data> &matrix) {
 
 // Move assignment
 template <typename Data>
-MatrixVec<Data>& MatrixVec<Data>::operator=(MatrixVec<Data>&& matrix) noexcept {
-    Vector<Data>::operator=(std::move(matrix));
-    std::swap(rowSize,matrix.rowSize);
-    std::swap(colSize,matrix.colSize);    
+MatrixVec<Data>& MatrixVec<Data>::operator=(MatrixVec<Data>&& inMatrix) noexcept {
+    Vector<Data>::operator=(std::move(inMatrix));
+    std::swap(rowSize,inMatrix.rowSize);
+    std::swap(colSize,inMatrix.colSize);    
     return *this;
 }
 
@@ -63,16 +63,16 @@ MatrixVec<Data>& MatrixVec<Data>::operator=(MatrixVec<Data>&& matrix) noexcept {
 
 // Comparison operators
 template <typename Data>
-bool MatrixVec<Data>::operator==(const MatrixVec<Data> &matrix) const noexcept {
-    if(rowSize==matrix.rowSize && colSize==matrix.colSize)
-        return Vector<Data>::operator==(matrix);
+bool MatrixVec<Data>::operator==(const MatrixVec<Data> &inMatrix) const noexcept {
+    if(rowSize==inMatrix.rowSize && colSize==inMatrix.colSize)
+        return Vector<Data>::operator==(inMatrix);
 
     return false;
 }
 
 template <typename Data>
-bool MatrixVec<Data>::operator!=(const MatrixVec<Data>  &matrix) const noexcept {
-    return !(*this == matrix);
+bool MatrixVec<Data>::operator!=(const MatrixVec<Data>  &inMatrix) const noexcept {
+    return !(*this == inMatrix);
 }
 
 /* ************************************************************************ */

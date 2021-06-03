@@ -45,7 +45,7 @@ MatrixCSR<Data>::MatrixCSR(MatrixCSR<Data> &&inMatrix) noexcept : MatrixCSR() {
     std::swap(head,inMatrix.head);
     std::swap(rowVector,inMatrix.rowVector);
 
-    for (ulong index = 0; (index < size) && (rowVector[index]==&inMatrix.head); index++)
+    for (ulong index = 0; (index < rowSize) && (rowVector[index]==&inMatrix.head); index++)
         rowVector[index] = &head;
     
     inMatrix.rowVector[0] = &inMatrix.head;
@@ -71,7 +71,7 @@ MatrixCSR<Data>& MatrixCSR<Data>::operator=(MatrixCSR<Data> &&inMatrix) noexcept
     std::swap(head,inMatrix.head);
     std::swap(rowVector,inMatrix.rowVector);
 
-    for (ulong index = 0; (index < size) && (rowVector[index]==&inMatrix.head); index++)
+    for (ulong index = 0; (index < rowSize) && (rowVector[index]==&inMatrix.head); index++)
         rowVector[index] = &head;
 
     for (ulong index = 0; (index < inMatrix.size) && (inMatrix.rowVector[index]==&head); index++)
