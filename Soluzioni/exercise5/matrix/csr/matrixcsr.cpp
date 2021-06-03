@@ -108,21 +108,20 @@ bool MatrixCSR<Data>::operator==(const MatrixCSR<Data> &inMatrix) const noexcept
             ptrExit1 = rowVector[index+1];
             ptrExit2 = inMatrix.rowVector[index+1];
 
-            while (ptrRow1 != ptrExit1 || ptrRow2 != ptrExit2) {
+            while (ptrRow1 != ptrExit1 && ptrRow2 != ptrExit2) {
                 nodo1 = *ptrRow1;
                 nodo2 = *ptrRow2;
 
-                if ((nodo1->info.first != nodo2->info.first) && (nodo1->info.second != nodo2->info.second))
+                if (nodo1->info!=nodo2->info)
                     return false;
                 
-                ptrRow1 = &(*ptrRow1)->next;
-                ptrRow2 = &(*ptrRow2)->next;
+                ptrRow1 = &(nodo1)->next;
+                ptrRow2 = &(nodo2)->next;
             }
 
-            if((ptrRow1 == ptrExit1 && ptrRow2 != ptrExit2) || (ptrRow1 != ptrExit1 && ptrExit2 == ptrExit2))
+            if((ptrRow1 == ptrExit1 && ptrRow2 != ptrExit2) ^ (ptrRow1 != ptrExit1 && ptrExit2 == ptrExit2))
                 return false;
         }
-        
         return true;
     }
     return false;
@@ -202,7 +201,7 @@ bool MatrixCSR<Data>::ExistsCell(const ulong i, const ulong j) const noexcept {
 
     Node** curr = rowVector[i];
 
-    while((curr!=rowVector[i+1]) && ((*curr)->info.second!=j)) {
+    while(curr!=rowVector[i+1]) {
         if((*curr)->info.second == j)
             return true;
 
