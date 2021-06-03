@@ -1,0 +1,19 @@
+Grafi:
+
+-Nozioni elementari.
+
+-Rappresentazioni concrete (matrici, liste e alberi di adiacenza).
+
+-Visite in ampiezza e profondità (pre e post ordine).
+
+-Iteratori su grafi.
+
+-Grafo di raggiungibilità.
+
+-Ordinamento topologico.
+
+-Componenti fortemente connesse.
+
+Reference:
+-[CLRS'09]: T.H. Cormen et al., Introduction to Algorithms, 2009, 3°ed.
+-[Sha'13]: C.A. Shaffer, Data Structures and Algorithm Analysis in C++, 2013, 3.2°ed.
