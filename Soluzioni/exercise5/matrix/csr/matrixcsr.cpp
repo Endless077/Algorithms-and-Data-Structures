@@ -198,7 +198,7 @@ bool MatrixCSR<Data>::ExistsCell(const ulong i, const ulong j) const noexcept {
 
     Node** curr = rowVector[i];
 
-    while(*curr!=nullptr && curr!=rowVector[i+1]) {
+    while(curr!=rowVector[i+1]) {
         Node& nodo = **curr;
         if(nodo.info.second == j)
             return true;
