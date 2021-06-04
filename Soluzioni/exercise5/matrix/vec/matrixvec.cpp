@@ -91,6 +91,9 @@ void MatrixVec<Data>::ColumnResize(const ulong newCol) {
         Clear();
         return;
     }
+        
+    if(newCol==colSize)
+        return;
     
     Data* TmpElements = new Data[newCol*rowSize] {};
     ulong curr = 0;
@@ -151,11 +154,9 @@ const Data& MatrixVec<Data>::operator()(const ulong i, const ulong j) const {
 
 template <typename Data>
 void MatrixVec<Data>::Clear() {
-    if(size>0) {
-        Vector<Data>::Clear();
-        rowSize = 0;
-        colSize = 0;
-    }
+    Vector<Data>::Clear();
+    rowSize = 0;
+    colSize = 0;
 }
 
 /* ************************************************************************** */

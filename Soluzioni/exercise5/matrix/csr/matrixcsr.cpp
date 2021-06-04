@@ -119,7 +119,7 @@ bool MatrixCSR<Data>::operator==(const MatrixCSR<Data> &inMatrix) const noexcept
                 ptrRow2 = &(nodo2)->next;
             }
 
-            if((ptrRow1 == ptrExit1 && ptrRow2 != ptrExit2) ^ (ptrRow1 != ptrExit1 && ptrExit2 == ptrExit2))
+            if((ptrRow1 == ptrExit1 && ptrRow2 != ptrExit2) ^ (ptrRow1 != ptrExit1 && ptrRow2 == ptrExit2))
                 return false;
         }
         return true;
@@ -163,12 +163,9 @@ void MatrixCSR<Data>::RowResize(const ulong newRow) {
 
 template <typename Data>
 void MatrixCSR<Data>::ColumnResize(const ulong newCol) {
-    if(newCol==0){
-        List<std::pair<Data,ulong>>::Clear();
-        colSize = 0;
-        return;
-    }
-    
+    //if(newCol==0)
+    //    List<std::pair<Data,ulong>>::Clear();
+
     if(newCol < colSize){
         ulong index = 1;
         Node** ptr = &head;
@@ -201,11 +198,12 @@ bool MatrixCSR<Data>::ExistsCell(const ulong i, const ulong j) const noexcept {
 
     Node** curr = rowVector[i];
 
-    while(curr!=rowVector[i+1]) {
-        if((*curr)->info.second == j)
+    while(*curr!=nullptr && curr!=rowVector[i+1]) {
+        Node& nodo = **curr;
+        if(nodo.info.second == j)
             return true;
 
-        curr = &((*curr)->next);
+        curr = &(nodo.next);
     }
 
     return false;
