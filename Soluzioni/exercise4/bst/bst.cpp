@@ -46,6 +46,9 @@ BST<Data>& BST<Data>::operator=(BST &&bt) noexcept {
 template <typename Data>
 bool BST<Data>::operator==(const BST &bt) const noexcept {
     if(size==bt.size){
+        if(size==0)
+            return true;
+            
         BTInOrderIterator<Data> iterThis(*this);
         BTInOrderIterator<Data> iterOther(bt);
         while (!iterThis.Terminated()){
