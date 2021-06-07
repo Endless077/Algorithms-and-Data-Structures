@@ -51,19 +51,16 @@ bool BST<Data>::operator==(const BST &bt) const noexcept {
             
         BTInOrderIterator<Data> iterThis(*this);
         BTInOrderIterator<Data> iterOther(bt);
-        while (!iterThis.Terminated()){
+        while (!iterThis.Terminated() && !iterOther.Terminated()){
             if(*iterThis != *iterOther)
                 return false;
             ++iterThis;
             ++iterOther;
         }
-        if(iterOther.Terminated())
+        if(iterOther.Terminated() && iterOther.Terminated())
             return true;
-        else
-            return false;
-    }else{
-        return false;
     }
+    return false;
 }
 
 template <typename Data>
@@ -243,8 +240,8 @@ struct BST<Data>::NodeLnk* BST<Data>::Detach(struct BST<Data>::NodeLnk *&node) n
             return SkipOnLeft(node);
         else {
           //Valgono entrambe le modalità nel caso in cui il nodo ha entrambi i figli.
-          //struct BST<Data>::NodeLnk* detach = DetachMax(node->leftchild);
-            struct BST<Data>::NodeLnk* detach = DetachMin(node->rightchild);
+          //struct BST<Data>::NodeLnk* detach = DetachMin(node->rightchild);
+            struct BST<Data>::NodeLnk* detach = DetachMax(node->leftchild);
             std::swap(node->element, detach->element);
             return detach; 
         }
