@@ -6,7 +6,8 @@ namespace lasd {
 
 // Constructor
 template <typename Data>
-MatrixCSR<Data>::MatrixCSR() : rowVector(1) {
+MatrixCSR<Data>::MatrixCSR() {
+    rowVector.Resize(1);
     rowVector[0] = &head;
 }
 

@@ -57,7 +57,7 @@ bool BST<Data>::operator==(const BST &bt) const noexcept {
             ++iterThis;
             ++iterOther;
         }
-        if(iterOther.Terminated() && iterOther.Terminated())
+        if(iterThis.Terminated() && iterOther.Terminated())
             return true;
     }
     return false;
@@ -365,7 +365,7 @@ struct BST<Data>::NodeLnk* const& BST<Data>::FindPointerToPredecessor(struct BST
             current = &((*current)->leftchild);
     }
 
-    if(*current!=nullptr && (*current)->leftchild!=nullptr)
+    if(*current!=nullptr && (*current)->HasLeftChild())
         return FindPointerToMax((*current)->leftchild);
     
     return *candidate;
@@ -386,7 +386,7 @@ struct BST<Data>::NodeLnk* const& BST<Data>::FindPointerToSuccessor(struct BST<D
         }
     }
 
-    if(*current!=nullptr && (*current)->rightchild!=nullptr)
+    if(*current!=nullptr && (*current)->HasRightChild())
         return FindPointerToMin((*current)->rightchild);
     
     return *candidate; 
