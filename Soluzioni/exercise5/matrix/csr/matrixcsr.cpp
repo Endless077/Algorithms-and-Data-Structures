@@ -46,7 +46,7 @@ MatrixCSR<Data>::MatrixCSR(MatrixCSR<Data> &&inMatrix) noexcept : MatrixCSR() {
     std::swap(head,inMatrix.head);
     std::swap(rowVector,inMatrix.rowVector);
 
-    for (ulong index = 0; (index < rowSize) && (rowVector[index]==&inMatrix.head); index++)
+    for (ulong index = 0; (index <= rowSize) && (rowVector[index]==&inMatrix.head); index++)
         rowVector[index] = &head;
     
     inMatrix.rowVector[0] = &inMatrix.head;
@@ -72,10 +72,10 @@ MatrixCSR<Data>& MatrixCSR<Data>::operator=(MatrixCSR<Data> &&inMatrix) noexcept
     std::swap(head,inMatrix.head);
     std::swap(rowVector,inMatrix.rowVector);
 
-    for (ulong index = 0; (index < rowSize) && (rowVector[index]==&inMatrix.head); index++)
+    for (ulong index = 0; (index <= rowSize) && (rowVector[index]==&inMatrix.head); index++)
         rowVector[index] = &head;
 
-    for (ulong index = 0; (index < inMatrix.size) && (inMatrix.rowVector[index]==&head); index++)
+    for (ulong index = 0; (index <= inMatrix.size) && (inMatrix.rowVector[index]==&head); index++)
         inMatrix.rowVector[index] = &inMatrix.head;
 
     return *this;
@@ -143,6 +143,7 @@ void MatrixCSR<Data>::RowResize(const ulong newRow) {
         List<std::pair<Data,ulong>>::Clear();
         rowSize = 0;
         rowVector.Resize(1);
+        rowVector[0] = &head;
         return;
     }
 
@@ -164,8 +165,13 @@ void MatrixCSR<Data>::RowResize(const ulong newRow) {
 
 template <typename Data>
 void MatrixCSR<Data>::ColumnResize(const ulong newCol) {
-    //if(newCol==0)
-    //    List<std::pair<Data,ulong>>::Clear();
+    if(newCol==0){
+        List<std::pair<Data,ulong>>::Clear();
+        for (ulong index = 0; index <= rowSize; index++)
+            rowVector[index] = &head;
+        colSize = 0;
+        return;
+    }
 
     if(newCol < colSize){
         ulong index = 1;
@@ -268,6 +274,7 @@ template <typename Data>
 void MatrixCSR<Data>::Clear() {
         List<std::pair<Data,ulong>>::Clear();
         rowVector.Resize(1);
+        rowVector[0] = &head;
         rowSize = 0;
         colSize = 0;
 }

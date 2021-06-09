@@ -81,6 +81,12 @@ bool MatrixVec<Data>::operator!=(const MatrixVec<Data>  &inMatrix) const noexcep
 
 template <typename Data>
 void MatrixVec<Data>::RowResize(const ulong newRow) {
+    if (newRow == 0) {
+        Vector<Data>::Clear();
+        rowSize = 0;
+        return;
+    }
+    
     Vector<Data>::Resize(newRow*colSize);
     rowSize = newRow;
 }
@@ -88,7 +94,8 @@ void MatrixVec<Data>::RowResize(const ulong newRow) {
 template <typename Data>
 void MatrixVec<Data>::ColumnResize(const ulong newCol) {
     if (newCol == 0) {
-        Clear();
+        Vector<Data>::Clear();
+        colSize = 0;
         return;
     }
         
