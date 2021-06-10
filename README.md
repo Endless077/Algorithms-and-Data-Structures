@@ -9,11 +9,11 @@ La libreria contiene esempi sul C++ e varie implementazioni di varie strutture d
 5. Marici;
 6. Grafi;
 
-Nel corso sfortunatamente non sono stati visti gli Alberi Red/Black e gli alberi AVL (si consiglia la presa visione poichè sono argomenti molto interessanti e che andrebbero approfonditi).
+Nel corso sfortunatamente non sono stati visti gli Alberi Red/Black, gli alberi AVL, Heap e le priority queue (si consiglia la presa visione poichè sono argomenti molto interessanti e che andrebbero approfonditi).
 
 ---
 
 Nota bene:
-Le librerie sono state svolte in autonomia rispettando i template dati dal professore. La soluzione potrebbe non essere la migliore ed ovviamente eventuali re-implementazioni possono essere molto utili ad imparare il linguaggio e le i vari algoritmi e strutture dati.
+Le librerie sono state svolte in autonomia rispettando i template dati dal professore. La soluzione potrebbe non essere la migliore ed ovviamente eventuali re-implementazioni possono essere molto utili ad imparare il linguaggio e i vari algoritmi e strutture dati.
 
-NON mi assumo nessuna responsabilità dell'utilizzo delle librerie per svolgere l'esame in questione (i sistemi conoscono il mio codice e probabilmente se ne accorgerebbero sicuramente) inoltre ho nascosto degli Easter Egg così da allontanarvi all'idea di consegnare la libreria.
+NON mi assumo nessuna responsabilità dell'utilizzo delle librerie per svolgere l'esame in questione (i sistemi conoscono il mio codice e probabilmente se ne accorgerebbero sicuramente) inoltre ho nascosto degli Easter Egg così da allontanarvi all'idea di consegnare la libreria XD.
