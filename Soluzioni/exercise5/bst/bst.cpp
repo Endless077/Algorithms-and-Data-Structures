@@ -226,7 +226,7 @@ bool BST<Data>::Exists(const Data &dato) const noexcept {
 template <typename Data>
 Data BST<Data>::DataNDelete(struct BST<Data>::NodeLnk *node) {
     Data dato;
-    std::swap(dato,node->Element());
+    std::swap(dato,node->info);
     delete node;
     return dato;
 }
