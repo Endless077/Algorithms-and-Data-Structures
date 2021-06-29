@@ -161,7 +161,7 @@ Data QueueVec<Data>::HeadNDequeue() {
         throw std::length_error("Access to the Head of an empty queue.");
 
     Data &data = Elements[front];
-    front = (front + 1) % (size+1);
+    front = (front + 1) % size;
 
     if(Size() == (size/4) && size>DEFAULT_CAPACITY){
         Reduce();
