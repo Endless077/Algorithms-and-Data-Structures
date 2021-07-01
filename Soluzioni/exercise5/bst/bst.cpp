@@ -157,29 +157,29 @@ void BST<Data>::RemoveMax() {
 //Predecessor function
 template <typename Data>
 const Data& BST<Data>::Predecessor(const Data &dato) const {
-    struct BST<Data>::NodeLnk* const& pointer = FindPointerToPredecessor(root, dato);
-    if(&pointer==nullptr)
+    struct BST<Data>::NodeLnk* const* pointer = &FindPointerToPredecessor(root, dato);
+    if(*pointer==nullptr)
         throw std::length_error("Predecessor not found.");
 
-    return (pointer)->element;   
+    return (*pointer)->element;   
 }
 
 template <typename Data>
 Data BST<Data>::PredecessorNRemove(const Data &dato) {
-    struct BST<Data>::NodeLnk*& pointer = FindPointerToPredecessor(root, dato);
+    struct BST<Data>::NodeLnk** pointer = &FindPointerToPredecessor(root, dato);
     if(&pointer==nullptr)
         throw std::length_error("Predecessor not found.");
     
-    return DataNDelete(Detach(pointer));
+    return DataNDelete(Detach(*pointer));
 }
 
 template <typename Data>
 void BST<Data>::RemovePredecessor(const Data &dato) {
-    struct BST<Data>::NodeLnk*& pointer = FindPointerToPredecessor(root, dato);
-    if(&pointer==nullptr)
+    struct BST<Data>::NodeLnk** pointer = &FindPointerToPredecessor(root, dato);
+    if(pointer==nullptr)
         throw std::length_error("Predecessor not found.");
     
-    delete Detach(pointer);
+    delete Detach(*pointer);
 }
 
 /* ************************************************************************ */
@@ -187,29 +187,29 @@ void BST<Data>::RemovePredecessor(const Data &dato) {
 //Successor function
 template <typename Data>
 const Data& BST<Data>::Successor(const Data &dato) const {
-    struct BST<Data>::NodeLnk* const& pointer = FindPointerToSuccessor(root, dato);
-    if(&pointer==nullptr)
+    struct BST<Data>::NodeLnk* const* pointer = &FindPointerToSuccessor(root, dato);
+    if(pointer==nullptr)
         throw std::length_error("Successor not found.");
 
-    return (pointer)->element;
+    return (*pointer)->element;
 }
 
 template <typename Data>
 Data BST<Data>::SuccessorNRemove(const Data &dato) {
-    struct BST<Data>::NodeLnk*& pointer = FindPointerToSuccessor(root, dato);
-    if(&pointer==nullptr)
+    struct BST<Data>::NodeLnk** pointer = &FindPointerToSuccessor(root, dato);
+    if(pointer==nullptr)
         throw std::length_error("Successor not found.");
 
-    return DataNDelete(Detach(pointer));
+    return DataNDelete(Detach(*pointer));
 }
 
 template <typename Data>
 void BST<Data>::RemoveSuccessor(const Data &dato) {
-    struct BST<Data>::NodeLnk*& pointer = FindPointerToSuccessor(root, dato);
-    if(&pointer==nullptr)
+    struct BST<Data>::NodeLnk** pointer = &FindPointerToSuccessor(root, dato);
+    if(pointer==nullptr)
         throw std::length_error("Successor not found.");
 
-    delete Detach(pointer);
+    delete Detach(*pointer);
 }
 
 /* ************************************************************************ */
