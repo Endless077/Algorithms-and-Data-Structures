@@ -1,7 +1,7 @@
 # Librerie
 Librerie di LASD (Laboratorio di Algoritmi e Strutture Dati) - Federico II
 
-Programmatore: Antonio Garofalo
+Studente: Antonio Garofalo
 
 La libreria contiene esempi sul C++ e varie implementazioni di varie strutture dati:
 1. Vector e List (30);
