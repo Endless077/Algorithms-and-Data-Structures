@@ -7,8 +7,9 @@ Prof: Fabio Mogavero
 
 Tips:
 
-All'interno della libreria è presente la cartella "Easy C++" con tutorial ed esempi fatti dal professore
-durante le lezioni utili alla realizzazione delle librerie.
+All'interno della libreria è presente la cartella "Easy C++" con tutorial ed esempi fatti dal professore durante le lezioni utili alla realizzazione delle librerie.
+
+---
 
 La libreria contiene esempi sul C++ e varie implementazioni di varie strutture dati:
 1. Vector e List (30);
