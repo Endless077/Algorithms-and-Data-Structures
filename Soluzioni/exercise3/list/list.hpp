@@ -147,29 +147,29 @@ public:
 
   using typename MappableContainer<Data>::MapFunctor;
 
-  void MapPreOrder(MapFunctor, void*) override; // Override MappableContainer member
-  void MapPostOrder(MapFunctor, void*) override; //Override MappableContainer member
+  void MapPreOrder(const MapFunctor, void*) override; // Override MappableContainer member
+  void MapPostOrder(const MapFunctor, void*) override; //Override MappableContainer member
 
   // Specific member functions (inherited from FoldableContainer)
 
   using typename FoldableContainer<Data>::FoldFunctor;
 
-  void FoldPreOrder(FoldFunctor, const void*, void*) const override; // Override FoldableContainer member
-  void FoldPostOrder(FoldFunctor, const void*, void*) const override;// Override FoldableContainer member
+  void FoldPreOrder(const FoldFunctor, const void*, void*) const override; // Override FoldableContainer member
+  void FoldPostOrder(const FoldFunctor, const void*, void*) const override;// Override FoldableContainer member
 
 protected:
 
   // Auxiliary member functions (for MappableContainer)
 
-  void MapPreOrder(MapFunctor, void*, Node*); // Accessory function executing from one point of the list onwards
-  void MapPostOrder(MapFunctor, void*, Node*); // Accessory function executing from one point of the list onwards
+  void MapPreOrder(const MapFunctor, void*, Node*); // Accessory function executing from one point of the list onwards
+  void MapPostOrder(const MapFunctor, void*, Node*); // Accessory function executing from one point of the list onwards
 
   /* ************************************************************************ */
 
   // Auxiliary member functions (for FoldableContainer)
 
-  void FoldPreOrder(FoldFunctor, const void*, void*, Node*) const; // Accessory function executing from one point of the list onwards
-  void FoldPostOrder(FoldFunctor, const void*, void*, Node*) const; // Accessory function executing from one point of the list onwards
+  void FoldPreOrder(const FoldFunctor, const void*, void*, Node*) const; // Accessory function executing from one point of the list onwards
+  void FoldPostOrder(const FoldFunctor, const void*, void*, Node*) const; // Accessory function executing from one point of the list onwards
 
 };
 
