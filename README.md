@@ -1,4 +1,4 @@
-# Librerie
+# Librerie (Data Structure)
 Librerie di LASD (Laboratorio di Algoritmi e Strutture Dati) - Federico II
 
 Studente: Antonio Garofalo
@@ -35,4 +35,4 @@ Nota bene:
 
 Le librerie sono state svolte in autonomia rispettando i template dati dal professore. La soluzione potrebbe non essere la migliore ed ovviamente eventuali re-implementazioni possono essere molto utili ad imparare il linguaggio e i vari algoritmi e strutture dati.
 
-NON mi assumo nessuna responsabilità dell'utilizzo delle librerie per svolgere l'esame in questione (i sistemi conoscono il mio codice e probabilmente se ne accorgerebbero sicuramente) inoltre ho nascosto degli Easter Egg così da allontanarvi all'idea di consegnare la libreria XD.
+NON mi assumo nessuna responsabilità dell'utilizzo delle librerie per svolgere l'esame in questione (i sistemi conoscono il mio codice e probabilmente se ne accorgerebbero sicuramente) inoltre ho nascosto degli Easter Egg così da allontanarvi all'idea di consegnare la libreria, buon divertimento XD.
