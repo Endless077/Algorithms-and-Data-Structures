@@ -9,6 +9,8 @@ Tips:
 
 All'interno della libreria è presente la cartella "Easy C++" con tutorial ed esempi fatti dal professore durante le lezioni utili alla realizzazione delle librerie.
 
+Si condiseri la presa visione di fonti d'informazione sul C++ per avere facile comprensione del linguaggio di programmazione.
+
 ---
 
 La libreria contiene esempi sul C++ e varie implementazioni di varie strutture dati:
@@ -16,7 +18,7 @@ La libreria contiene esempi sul C++ e varie implementazioni di varie strutture d
 2. Stack e Queue (29);
 3. Alberi Binari (30);
 4. Alberi Binari di Ricerca (25);
-5. Marici (27);
+5. Matrici (27);
 6. Grafi;
 
 Media Voti: 28
