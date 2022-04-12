@@ -3,7 +3,7 @@ Librerie di LASD (Laboratorio di Algoritmi e Strutture Dati) - Federico II
 
 Studente: Antonio Garofalo
 
-Prof: Fabio Mogavero
+Prof: F. Mogavero
 
 Tips:
 
