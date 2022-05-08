@@ -389,6 +389,9 @@ BTPreOrderIterator<Data>& BTPreOrderIterator<Data>::operator++() {
 //Function GetMostLeftNode
 template <typename Data>
 void BTInOrderIterator<Data>::getMostLeftNode() {
+    if(current==nullptr)
+        return;
+
     while (current->HasLeftChild()) {
         stk.Push(current);
         current = &(current->LeftChild());
@@ -513,6 +516,9 @@ BTInOrderIterator<Data>& BTInOrderIterator<Data>::operator++() {
 //Function GetMostLeftLeaf
 template <typename Data>
 void BTPostOrderIterator<Data>::getMostLeftLeaf() {
+    if(current==nullptr)
+        return;
+
     while (current->HasLeftChild()) {
         stk.Push(current);
         current = &(current->LeftChild());
