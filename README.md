@@ -1,38 +1,50 @@
-# Librerie (Data Structure)
-Librerie di LASD (Laboratorio di Algoritmi e Strutture Dati) - Federico II
+# 📚 Librerie (Data Structures and Algorithms)
 
-Studente: Antonio Garofalo
+**Librerie di LASD** (Laboratorio di Algoritmi e Strutture Dati) - Federico II
 
-Prof: F. Mogavero
+**Studente**: Antonio Garofalo  
+**Professore**: F. Mogavero
 
-Tips:
 
-All'interno della libreria è presente la cartella "Easy C++" con tutorial ed esempi fatti dal professore durante le lezioni utili alla realizzazione delle librerie.
+## 🚀 Introduzione
 
-Si condiseri la presa visione di fonti d'informazione sul C++ per avere facile comprensione del linguaggio di programmazione.
+All'interno della libreria è presente la cartella `examples and tutorials` con tutorial ed esempi realizzati dal professore durante le lezioni. Questi materiali sono utili per la realizzazione delle librerie.
 
----
+Si consiglia di consultare fonti aggiuntive sul C++ per una migliore comprensione del linguaggio di programmazione.
 
-La libreria contiene esempi sul C++ e varie implementazioni di varie strutture dati:
-1. Vector e List (30);
-2. Stack e Queue (29);
-3. Alberi Binari (30);
-4. Alberi Binari di Ricerca (25);
-5. Matrici (27);
-6. Grafi;
 
-Media Voti: 28
+## 📖 Contenuto della Libreria
 
-Nel corso sfortunatamente non sono stati visti gli Alberi Red/Black, gli alberi AVL, Heap e le priority queue (si consiglia la presa visione poichè sono argomenti molto interessanti e che andrebbero approfonditi).
+La libreria include esempi sul C++ e varie implementazioni di strutture dati:
 
-ATTENZIONE:
+1. **Vector e List** (30) 📏
+2. **Stack e Queue** (29) 🗃️
+3. **Alberi Binari** (30) 🌳
+4. **Alberi Binari di Ricerca** (25) 🔍
+5. **Matrici** (27) 🧮
+6. **Grafi** 🌐
 
-La libreria ai fini pratici è stata rivisitata e corretta in modo da ottenere un risultato perfetto al 100%, sono stati fatti stressTest.cpp approfonditi, i voti e la media in questione sono le prime consegne, infatti post consegna ho personalmente re-implementato il tutto per avere un risultato migliore correggendo gli errori trovati.
+**Media Voti**: 28
 
----
+### ⚠️ Nota Importante
 
-Nota bene:
+Nel corso non sono stati trattati gli **Alberi Red/Black**, gli **alberi AVL**, gli **Heap** e le **priority queue**. Questi sono argomenti molto interessanti che si consiglia di approfondire ulteriormente.
 
-Le librerie sono state svolte in autonomia rispettando i template dati dal professore. La soluzione potrebbe non essere la migliore ed ovviamente eventuali re-implementazioni possono essere molto utili ad imparare il linguaggio e i vari algoritmi e strutture dati.
 
-NON mi assumo nessuna responsabilità dell'utilizzo delle librerie per svolgere l'esame in questione (i sistemi conoscono il mio codice e probabilmente se ne accorgerebbero sicuramente) inoltre ho nascosto degli Easter Egg così da allontanarvi all'idea di consegnare la libreria, buon divertimento XD.
+## 💾 License
+
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+
+©️ GNU General Public License (GPL), more details [here](https://www.gnu.org/licenses/gpl-3.0.en.html).
+
+
+## 🛠️ Attenzione
+
+La libreria è stata rivisitata e corretta per ottenere un risultato al 100%. Sono stati eseguiti stress test approfonditi e i voti e la media indicati si riferiscono alle prime consegne. Dopo la consegna, ho personalmente re-implementato tutto per ottenere un risultato migliore correggendo gli errori riscontrati.
+
+
+## 💡 Nota Bene
+
+Le librerie sono state sviluppate in autonomia seguendo i template forniti dal professore. La soluzione potrebbe non essere ottimale e re-implementazioni possono essere molto utili per apprendere il linguaggio e le strutture dati.
+
+**DISCLAIMER**: Non mi assumo alcuna responsabilità per l'utilizzo delle librerie per l'esame. I sistemi potrebbero riconoscere il mio codice e potrebbero accorgersi facilmente di eventuali tentativi di utilizzo improprio. Inoltre, ho nascosto degli **Easter Egg** 🥚 per dissuadere dall'idea di consegnare la libreria. Buon divertimento! 😆
